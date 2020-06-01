@@ -67,7 +67,7 @@ export default function Area_calc({ navigation }) {
           value={propery_price}
           textAlign={"center"}
           placeholder={"£250000"}
-          onChangeText={(propery_price) => set_propery_price(propery_price)}
+          onChangeText={propery_price => set_propery_price(propery_price)}
         />
         <Text style={styles.text_style}>Area type</Text>
         <View style={{ flexDirection: "row" }}>
@@ -93,11 +93,11 @@ export default function Area_calc({ navigation }) {
           value={area}
           textAlign={"center"}
           placeholder={"75m²/ft²"}
-          onChangeText={(area) => set_area(area)}
+          onChangeText={area => set_area(area)}
         />
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: "row"
           }}
         >
           <Button
@@ -131,24 +131,25 @@ export default function Area_calc({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#fff",
-    backgroundColor: "green",
-    alignItems: "center",
+    backgroundColor: "#fff",
+    // backgroundColor: "green",
+    alignItems: "center"
+    // paddingTop: 10
     // justifyContent: "center"
   },
   sub_container: {
     flex: 1,
     alignItems: "center",
     backgroundColor: "#fff",
-    width: "90%",
+    width: "90%"
   },
   text_box_style: {
     height: 40,
     width: "100%",
     borderColor: "gray",
-    borderWidth: 1,
+    borderWidth: 1
   },
   text_style: {
-    alignSelf: "flex-start",
-  },
+    alignSelf: "flex-start"
+  }
 });
