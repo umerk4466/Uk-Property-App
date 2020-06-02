@@ -19,6 +19,10 @@ export default function Area_calc({ navigation }) {
   const [sqmetre_result, set_sqmetre_result] = useState(0);
   const [sqfoot_result, set_sqfoot_result] = useState(0);
 
+  const [bottom_text, set_bottom_text] = useState(
+    "To get price/sqmeter or price/sqfoot enter property price and Area in above fields."
+  );
+
   let area_focus = React.createRef();
 
   function set_area_type(area_type) {
@@ -35,7 +39,12 @@ export default function Area_calc({ navigation }) {
 
   function calculate_area() {
     // get text box data
-    if (propery_price === "" || area === "") {
+    if (
+      isNaN(propery_price) ||
+      propery_price === "" ||
+      isNaN(area) ||
+      area === ""
+    ) {
       alert("Fill required fields");
     }
     // get checked button info
@@ -48,6 +57,18 @@ export default function Area_calc({ navigation }) {
       let sqmetre = (propery_price / area) * 10.764;
       sqmetre = sqmetre.toFixed(2);
       set_sqmetre_result(sqmetre);
+      // set screen's bottom text
+      set_bottom_text(
+        "If your Propery Price is " +
+          propery_price +
+          "£ and the Area of your property is " +
+          area +
+          "/ft². Then the Price per Sqmeter is " +
+          sqmetre +
+          "/m². And Price per Sqfoot is " +
+          sqfoot +
+          "/ft²."
+      );
     } else if (sqm == true) {
       let sqfoot = propery_price / area / 10.764;
       sqfoot = sqfoot.toFixed(2);
@@ -56,6 +77,19 @@ export default function Area_calc({ navigation }) {
       let sqmetre = propery_price / area;
       sqmetre = sqmetre.toFixed(2);
       set_sqmetre_result(sqmetre);
+
+      // set screen's bottom text
+      set_bottom_text(
+        "If your Propery Price is " +
+          propery_price +
+          "£ and the Area of your property is " +
+          area +
+          "/mt². Then the Price per Sqmeter is " +
+          sqmetre +
+          "/m². And Price per Sqfoot is " +
+          sqfoot +
+          "/ft²."
+      );
     }
   }
 
@@ -66,6 +100,9 @@ export default function Area_calc({ navigation }) {
     set_sqfoot_result(0);
     set_sqm(true);
     set_sqf(false);
+    set_bottom_text(
+      "To get price/sqmeter or price/sqfoot enter property price and Area in above fields."
+    );
   }
   return (
     <SafeAreaView style={styles.container}>
@@ -132,11 +169,7 @@ export default function Area_calc({ navigation }) {
             </View>
           </View>
           <View style={styles.col}>
-            <Text style={styles.bottom_text}>
-              If your Propery Price is {propery_price}£ and the Area of your
-              property is {area}. Then the Price per Sqmeter is {sqmetre_result}
-              . And Price per Sqfoot is {sqfoot_result}.{" "}
-            </Text>
+            <Text style={styles.bottom_text}>{bottom_text}</Text>
           </View>
         </View>
       </ScrollView>
@@ -156,7 +189,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: 10,
     justifyContent: "space-around",
-    borderWidth: 0.5,
+    borderBottomWidth: 0.5,
     flexWrap: "wrap"
   },
   inner_div: {
