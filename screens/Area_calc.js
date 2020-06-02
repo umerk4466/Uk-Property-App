@@ -1,6 +1,14 @@
 import React, { useState, setState } from "react";
 import { CheckBox, Button } from "react-native-elements";
-import { StyleSheet, Text, View, TextInput, Alert } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Alert
+} from "react-native";
 
 export default function Area_calc({ navigation }) {
   const [sqm, set_sqm] = useState(true);
@@ -58,73 +66,86 @@ export default function Area_calc({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.sub_container}>
-        <Text style={styles.text_style}>Propery Price £</Text>
-        <TextInput
-          style={styles.text_box_style}
-          keyboardType="numeric"
-          value={propery_price}
-          textAlign={"center"}
-          placeholder={"£250000"}
-          onChangeText={propery_price => set_propery_price(propery_price)}
-        />
-        <Text style={styles.text_style}>Area type</Text>
-        <View style={{ flexDirection: "row" }}>
-          <CheckBox
-            title="sqmetre"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={sqm}
-            onPress={() => set_area_type("sqm")}
-          />
-          <CheckBox
-            title="sqfoot"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={sqf}
-            onPress={() => set_area_type("sqf")}
-          />
-        </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={styles.main_row}>
+          <View style={styles.result_container}>
+            <View style={styles.inner_div}>
+              <Text>Price/Sqmeter</Text>
+              <Text>{sqmetre_result}</Text>
+            </View>
+            <View style={styles.inner_div}>
+              <Text>Price/Sqfoot</Text>
+              <Text>{sqfoot_result}</Text>
+            </View>
+          </View>
+          <View style={styles.col}>
+            <Text>Propery Price</Text>
+            <TextInput
+              style={styles.text_box_style}
+              keyboardType="numeric"
+              value={propery_price}
+              textAlign={"center"}
+              placeholder={"£250000"}
+              onChangeText={propery_price => set_propery_price(propery_price)}
+            />
+          </View>
+          <View style={styles.col}>
+            <Text>Area type</Text>
+            <View style={styles.checkbox_container}>
+              <CheckBox
+                title="sqmetre"
+                checkedIcon="dot-circle-o"
+                uncheckedIcon="circle-o"
+                checked={sqm}
+                onPress={() => set_area_type("sqm")}
+              />
+              <CheckBox
+                title="sqfoot"
+                checkedIcon="dot-circle-o"
+                uncheckedIcon="circle-o"
+                checked={sqf}
+                onPress={() => set_area_type("sqf")}
+              />
+            </View>
+            <TextInput
+              style={styles.text_box_style}
+              keyboardType="numeric"
+              value={area}
+              textAlign={"center"}
+              placeholder={"75m²/ft²"}
+              onChangeText={area => set_area(area)}
+            />
+          </View>
+          <View>
+            <View>
+              <Button
+                buttonStyle={{ margin: 10 }}
+                title="Reset"
+                onPress={() => reset_button()}
+              />
+              <Button
+                buttonStyle={{ margin: 10 }}
+                title="Calculate"
+                onPress={() => calculate_area()}
+              />
+            </View>
 
-        <TextInput
-          style={styles.text_box_style}
-          keyboardType="numeric"
-          value={area}
-          textAlign={"center"}
-          placeholder={"75m²/ft²"}
-          onChangeText={area => set_area(area)}
-        />
-        <View
-          style={{
-            flexDirection: "row"
-          }}
-        >
-          <Button
-            buttonStyle={{ margin: 10 }}
-            title="Reset"
-            onPress={() => reset_button()}
-          />
-          <Button
-            buttonStyle={{ margin: 10 }}
-            title="Calculate"
-            onPress={() => calculate_area()}
-          />
-        </View>
+            {/* <View style={{ flexDirection: "row" }}>
+            <Text style={{ margin: 20 }}>
+              Price/Sqmeter{"\n"}
+              {sqmetre_result}
+            </Text>
 
-        <View style={{ flexDirection: "row" }}>
-          <Text style={{ margin: 20 }}>
-            Price/Sqmeter{"\n"}
-            {sqmetre_result}
-          </Text>
-
-          <Text style={{ margin: 20 }}>
-            Price/Sqfoot{"\n"}
-            {sqfoot_result}
-          </Text>
+            <Text style={{ margin: 20 }}>
+              Price/Sqfoot{"\n"}
+              {sqfoot_result}
+            </Text>
+          </View> */}
+          </View>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -137,19 +158,35 @@ const styles = StyleSheet.create({
     // paddingTop: 10
     // justifyContent: "center"
   },
-  sub_container: {
-    flex: 1,
+  main_row: {
+    margin: 10
+  },
+  result_container: {
+    // backgroundColor: "white",
+    height: 100,
+    flexDirection: "row",
+    // backgroundColor: "red",
+    justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#fff",
-    width: "90%"
+    borderBottomWidth: 0.5
+  },
+  inner_div: {
+    alignItems: "center",
+    marginHorizontal: 10
+  },
+  col: {
+    marginVertical: 10
+  },
+  checkbox_container: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center"
   },
   text_box_style: {
+    marginVertical: 5,
     height: 40,
     width: "100%",
     borderColor: "gray",
-    borderWidth: 1
-  },
-  text_style: {
-    alignSelf: "flex-start"
+    borderWidth: 0.5
   }
 });
