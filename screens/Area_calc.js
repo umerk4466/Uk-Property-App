@@ -6,8 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  Alert
+  TextInput
 } from "react-native";
 
 export default function Area_calc({ navigation }) {
@@ -20,6 +19,8 @@ export default function Area_calc({ navigation }) {
   const [sqmetre_result, set_sqmetre_result] = useState(0);
   const [sqfoot_result, set_sqfoot_result] = useState(0);
 
+  let area_focus = React.createRef();
+
   function set_area_type(area_type) {
     set_area("");
     if (area_type === "sqm") {
@@ -29,6 +30,7 @@ export default function Area_calc({ navigation }) {
       set_sqm(false);
       set_sqf(true);
     }
+    area_focus.current.focus();
   }
 
   function calculate_area() {
@@ -63,8 +65,8 @@ export default function Area_calc({ navigation }) {
     set_sqmetre_result(0);
     set_sqfoot_result(0);
     set_sqm(true);
+    set_sqf(false);
   }
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -109,6 +111,7 @@ export default function Area_calc({ navigation }) {
               />
             </View>
             <TextInput
+              ref={area_focus}
               style={styles.text_box_style}
               keyboardType="numeric"
               value={area}
@@ -128,6 +131,13 @@ export default function Area_calc({ navigation }) {
               <Button title="Reset All" onPress={() => reset_button()} />
             </View>
           </View>
+          <View style={styles.col}>
+            <Text style={styles.bottom_text}>
+              If your Propery Price is {propery_price}£ and the Area of your
+              property is {area}. Then the Price per Sqmeter is {sqmetre_result}
+              . And Price per Sqfoot is {sqfoot_result}.{" "}
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -143,7 +153,6 @@ const styles = StyleSheet.create({
     margin: 10
   },
   result_container: {
-    // backgroundColor: "blue",
     flexDirection: "row",
     paddingVertical: 10,
     justifyContent: "space-around",
@@ -163,15 +172,19 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   button_container: {
-    borderTopWidth: 0.5,
+    // borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
     paddingVertical: 10
   },
   text_box_style: {
     marginVertical: 5,
-    height: 40,
+    height: 35,
     maxWidth: "100%",
     borderWidth: 0.5,
-    borderRadius: 5
+    borderRadius: 3
+  },
+  bottom_text: {
+    // fontSize: 13,
+    fontStyle: "italic"
   }
 });
