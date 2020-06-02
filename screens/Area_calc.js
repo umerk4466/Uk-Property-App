@@ -19,6 +19,8 @@ export default function Area_calc({ navigation }) {
   const [sqmetre_result, set_sqmetre_result] = useState(0);
   const [sqfoot_result, set_sqfoot_result] = useState(0);
 
+  const [is_text_input_empty, set_is_text_input_empty] = useState(false);
+
   const [bottom_text, set_bottom_text] = useState(
     "To get price/sqmeter or price/sqfoot enter property price and Area in above fields."
   );
@@ -38,14 +40,16 @@ export default function Area_calc({ navigation }) {
   }
 
   function calculate_area() {
-    // get text box data
+    // get text input data
     if (
       isNaN(propery_price) ||
       propery_price === "" ||
       isNaN(area) ||
       area === ""
     ) {
-      alert("Fill required fields");
+      alert("Please fill all required fields");
+      set_is_text_input_empty(true);
+      // set_propery_price("1");
     }
     // get checked button info
     //  convert area
@@ -90,6 +94,7 @@ export default function Area_calc({ navigation }) {
           sqfoot +
           "/ft²."
       );
+      set_is_text_input_empty(false);
     }
   }
 
@@ -103,6 +108,7 @@ export default function Area_calc({ navigation }) {
     set_bottom_text(
       "To get price/sqmeter or price/sqfoot enter property price and Area in above fields."
     );
+    set_is_text_input_empty(false);
   }
   return (
     <SafeAreaView style={styles.container}>
@@ -121,7 +127,11 @@ export default function Area_calc({ navigation }) {
           <View style={styles.col}>
             <Text>Propery Price</Text>
             <TextInput
-              style={styles.text_box_style}
+              style={
+                is_text_input_empty
+                  ? styles.empty_text_input_style
+                  : styles.text_input_style
+              }
               keyboardType="numeric"
               value={propery_price}
               textAlign={"center"}
@@ -149,7 +159,11 @@ export default function Area_calc({ navigation }) {
             </View>
             <TextInput
               ref={area_focus}
-              style={styles.text_box_style}
+              style={
+                is_text_input_empty
+                  ? styles.empty_text_input_style
+                  : styles.text_input_style
+              }
               keyboardType="numeric"
               value={area}
               textAlign={"center"}
@@ -209,12 +223,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     paddingVertical: 10
   },
-  text_box_style: {
+  text_input_style: {
     marginVertical: 5,
     height: 35,
     maxWidth: "100%",
     borderWidth: 0.5,
     borderRadius: 3
+  },
+  empty_text_input_style: {
+    marginVertical: 5,
+    height: 35,
+    maxWidth: "100%",
+    borderWidth: 1,
+    borderRadius: 3,
+    borderColor: "red"
   },
   bottom_text: {
     // fontSize: 13,
