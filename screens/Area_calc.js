@@ -117,17 +117,17 @@ export default function Area_calc({ navigation }) {
               onChangeText={area => set_area(area)}
             />
           </View>
-          <View>
+          <View style={styles.col}>
             <View>
               <Button
-                buttonStyle={{ margin: 10 }}
-                title="Reset"
-                onPress={() => reset_button()}
-              />
-              <Button
-                buttonStyle={{ margin: 10 }}
+                buttonStyle={{ marginVertical: 10 }}
                 title="Calculate"
                 onPress={() => calculate_area()}
+              />
+              <Button
+                buttonStyle={{ marginVertical: 10 }}
+                title="Reset"
+                onPress={() => reset_button()}
               />
             </View>
 
@@ -152,9 +152,9 @@ export default function Area_calc({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
     // backgroundColor: "green",
-    alignItems: "center"
+    // alignItems: "center"
     // paddingTop: 10
     // justifyContent: "center"
   },
@@ -162,20 +162,19 @@ const styles = StyleSheet.create({
     margin: 10
   },
   result_container: {
-    // backgroundColor: "white",
-    height: 100,
+    // backgroundColor: "blue",
     flexDirection: "row",
-    // backgroundColor: "red",
+    paddingVertical: 10,
     justifyContent: "space-around",
-    alignItems: "center",
-    borderBottomWidth: 0.5
+    borderWidth: 0.5,
+    flexWrap: "wrap"
   },
   inner_div: {
     alignItems: "center",
-    marginHorizontal: 10
+    marginVertical: 10
   },
   col: {
-    marginVertical: 10
+    marginTop: 10
   },
   checkbox_container: {
     flexDirection: "row",
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
   text_box_style: {
     marginVertical: 5,
     height: 40,
-    width: "100%",
+    maxWidth: "100%",
     borderColor: "gray",
     borderWidth: 0.5
   }
