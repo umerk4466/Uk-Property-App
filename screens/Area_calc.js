@@ -1,4 +1,4 @@
-import React, { useState, setState } from "react";
+import React, { useState } from "react";
 import { CheckBox, Button } from "react-native-elements";
 import {
   SafeAreaView,
