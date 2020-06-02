@@ -117,31 +117,16 @@ export default function Area_calc({ navigation }) {
               onChangeText={area => set_area(area)}
             />
           </View>
+
           <View style={styles.col}>
-            <View>
+            <View style={styles.button_container}>
               <Button
-                buttonStyle={{ marginVertical: 10 }}
-                title="Calculate"
+                buttonStyle={{ marginBottom: 10 }}
+                title="Calculate Pirce"
                 onPress={() => calculate_area()}
               />
-              <Button
-                buttonStyle={{ marginVertical: 10 }}
-                title="Reset"
-                onPress={() => reset_button()}
-              />
+              <Button title="Reset All" onPress={() => reset_button()} />
             </View>
-
-            {/* <View style={{ flexDirection: "row" }}>
-            <Text style={{ margin: 20 }}>
-              Price/Sqmeter{"\n"}
-              {sqmetre_result}
-            </Text>
-
-            <Text style={{ margin: 20 }}>
-              Price/Sqfoot{"\n"}
-              {sqfoot_result}
-            </Text>
-          </View> */}
           </View>
         </View>
       </ScrollView>
@@ -153,10 +138,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-    // backgroundColor: "green",
-    // alignItems: "center"
-    // paddingTop: 10
-    // justifyContent: "center"
   },
   main_row: {
     margin: 10
@@ -181,11 +162,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center"
   },
+  button_container: {
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
+    paddingVertical: 10
+  },
   text_box_style: {
     marginVertical: 5,
     height: 40,
     maxWidth: "100%",
-    borderColor: "gray",
-    borderWidth: 0.5
+    borderWidth: 0.5,
+    borderRadius: 5
   }
 });
