@@ -4,6 +4,7 @@ import { Icon, Button } from "react-native-elements";
 // import screens
 import Home from "./Home";
 import Roi_calc from "./Roi_calc";
+
 // import stack Navigator
 import { createStackNavigator } from "@react-navigation/stack";
 import Area_calc from "./Area_calc";
@@ -31,7 +32,7 @@ export default function HomeStack({ navigation }) {
                 type="clear"
               />
             </View>
-          ),
+          )
         }}
       />
       <Stack.Screen name="Roi" component={Roi_calc} />
@@ -43,6 +44,6 @@ export default function HomeStack({ navigation }) {
 // styles
 const styles = StyleSheet.create({
   margnLeft: {
-    marginLeft: 12,
-  },
+    marginLeft: 12
+  }
 });
