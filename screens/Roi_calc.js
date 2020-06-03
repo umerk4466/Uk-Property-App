@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Roi({ navigation }) {
+export default function Roi_calc({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Roi</Text>
+      <Text>Roi_calc</Text>
     </View>
   );
 }
@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

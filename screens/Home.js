@@ -5,7 +5,7 @@ import {
   View,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from "react-native";
 
 export default function Home({ navigation }) {
@@ -56,7 +56,7 @@ export default function Home({ navigation }) {
         <TouchableOpacity
           style={styles.custom_button_container}
           onPress={() => {
-            navigation.navigate("Area_calc");
+            navigation.navigate("Price Per Area");
           }}
         >
           <View style={styles.image_box}>
@@ -81,32 +81,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   custom_button_container: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
     width: "100%",
-    height: 85
+    height: 85,
   },
   ImageIconStyle: {
     height: 48,
-    width: 48
+    width: 48,
   },
   image_box: {
     width: "25%",
-    alignItems: "center"
+    alignItems: "center",
   },
   text_box: {
-    marginRight: 10
+    marginRight: 10,
   },
   bottom_line: {
     width: "75%",
     backgroundColor: "gray",
     alignSelf: "flex-end",
-    height: "0.2%"
-  }
+    height: "0.2%",
+  },
 });
 
 {

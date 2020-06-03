@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput
+  TextInput,
 } from "react-native";
 
 export default function Area_calc({ navigation }) {
@@ -49,7 +49,6 @@ export default function Area_calc({ navigation }) {
     ) {
       alert("Please fill all required fields");
       set_is_text_input_empty(true);
-      // set_propery_price("1");
     }
     // get checked button info
     //  convert area
@@ -136,7 +135,7 @@ export default function Area_calc({ navigation }) {
               value={propery_price}
               textAlign={"center"}
               placeholder={"£250000"}
-              onChangeText={propery_price => set_propery_price(propery_price)}
+              onChangeText={(propery_price) => set_propery_price(propery_price)}
             />
           </View>
           <View style={styles.col}>
@@ -168,7 +167,7 @@ export default function Area_calc({ navigation }) {
               value={area}
               textAlign={"center"}
               placeholder={"75m²/ft²"}
-              onChangeText={area => set_area(area)}
+              onChangeText={(area) => set_area(area)}
             />
           </View>
 
@@ -194,41 +193,41 @@ export default function Area_calc({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   main_row: {
-    margin: 10
+    margin: 10,
   },
   result_container: {
     flexDirection: "row",
     paddingVertical: 10,
     justifyContent: "space-around",
     borderBottomWidth: 0.5,
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   inner_div: {
     alignItems: "center",
-    marginVertical: 10
+    marginVertical: 10,
   },
   col: {
-    marginTop: 10
+    marginTop: 10,
   },
   checkbox_container: {
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
   },
   button_container: {
     // borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   text_input_style: {
     marginVertical: 5,
     height: 35,
     maxWidth: "100%",
     borderWidth: 0.5,
-    borderRadius: 3
+    borderRadius: 3,
   },
   empty_text_input_style: {
     marginVertical: 5,
@@ -236,10 +235,10 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     borderWidth: 1,
     borderRadius: 3,
-    borderColor: "red"
+    borderColor: "red",
   },
   bottom_text: {
     // fontSize: 13,
-    fontStyle: "italic"
-  }
+    fontStyle: "italic",
+  },
 });

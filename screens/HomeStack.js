@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Icon, Button } from "react-native-elements";
 // import screens
 import Home from "./Home";
-import Roi from "./Roi";
+import Roi_calc from "./Roi_calc";
 // import stack Navigator
 import { createStackNavigator } from "@react-navigation/stack";
 import Area_calc from "./Area_calc";
@@ -31,11 +31,11 @@ export default function HomeStack({ navigation }) {
                 type="clear"
               />
             </View>
-          )
+          ),
         }}
       />
-      <Stack.Screen name="Roi" component={Roi} />
-      <Stack.Screen name="Area_calc" component={Area_calc} />
+      <Stack.Screen name="Roi" component={Roi_calc} />
+      <Stack.Screen name="Price Per Area" component={Area_calc} />
     </Stack.Navigator>
   );
 }
@@ -43,6 +43,6 @@ export default function HomeStack({ navigation }) {
 // styles
 const styles = StyleSheet.create({
   margnLeft: {
-    marginLeft: 12
-  }
+    marginLeft: 12,
+  },
 });
