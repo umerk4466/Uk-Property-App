@@ -7,7 +7,7 @@ export default function all_pages_structure({ navigation }) {
       <ScrollView>
         <View style={styles.main_row}>
           <View style={styles.col}>
-            <Text>Content goes here Or new view</Text>
+            <Text>Content goes here</Text>
           </View>
         </View>
       </ScrollView>
