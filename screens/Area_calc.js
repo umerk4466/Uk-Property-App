@@ -8,6 +8,8 @@ import {
   View,
   TextInput
 } from "react-native";
+// textinput imported for money field.
+import { TextInputMask } from "react-native-masked-text";
 
 export default function Area_calc({ navigation }) {
   const [sqm, set_sqm] = useState(true);
@@ -16,8 +18,8 @@ export default function Area_calc({ navigation }) {
   const [propery_price, set_propery_price] = useState("");
   const [area, set_area] = useState("");
 
-  const [sqmetre_result, set_sqmetre_result] = useState(0);
-  const [sqfoot_result, set_sqfoot_result] = useState(0);
+  const [sqmetre_result, set_sqmetre_result] = useState("£" + 0);
+  const [sqfoot_result, set_sqfoot_result] = useState("£" + 0);
 
   const [is_text_input_empty, set_is_text_input_empty] = useState(false);
 
@@ -38,9 +40,11 @@ export default function Area_calc({ navigation }) {
     }
     area_focus.current.focus();
   }
-
+  function add_commas(val) {
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   function calculate_area() {
-    // get text input data
+    // get text input data and validate data
     if (
       isNaN(propery_price) ||
       propery_price === "" ||
@@ -49,49 +53,58 @@ export default function Area_calc({ navigation }) {
     ) {
       alert("Please fill all required fields");
       set_is_text_input_empty(true);
+    } else if (
+      propery_price == 0 ||
+      area == 0 ||
+      propery_price < 0 ||
+      area < 0
+    ) {
+      alert("Please enter valid number negative or 0 value are not valid");
+      set_is_text_input_empty(true);
     }
     // get checked button info
     //  convert area
     else if (sqf == true) {
       let sqfoot = propery_price / area;
       sqfoot = sqfoot.toFixed(2);
-      set_sqfoot_result(sqfoot);
+      set_sqfoot_result("£" + add_commas(sqfoot));
 
       let sqmetre = (propery_price / area) * 10.764;
       sqmetre = sqmetre.toFixed(2);
-      set_sqmetre_result(sqmetre);
+      set_sqmetre_result("£" + add_commas(sqmetre));
       // set screen's bottom text
       set_bottom_text(
-        "If your Propery Price is " +
-          propery_price +
-          "£ and the Area of your property is " +
+        "If your Propery's Price is £" +
+          add_commas(propery_price) +
+          " and the Area of your property is " +
           area +
-          "/ft². Then the Price per Sqmeter is " +
-          sqmetre +
-          "/m². And Price per Sqfoot is " +
-          sqfoot +
-          "/ft²."
+          "/ft². Then the Price per Sqmeter is £" +
+          add_commas(sqmetre) +
+          ". And Price per Sqfoot is £" +
+          add_commas(sqfoot) +
+          "."
       );
+      set_is_text_input_empty(false);
     } else if (sqm == true) {
       let sqfoot = propery_price / area / 10.764;
       sqfoot = sqfoot.toFixed(2);
-      set_sqfoot_result(sqfoot);
+      set_sqfoot_result("£" + add_commas(sqfoot));
 
       let sqmetre = propery_price / area;
       sqmetre = sqmetre.toFixed(2);
-      set_sqmetre_result(sqmetre);
+      set_sqmetre_result("£" + add_commas(sqmetre));
 
       // set screen's bottom text
       set_bottom_text(
-        "If your Propery Price is " +
-          propery_price +
-          "£ and the Area of your property is " +
+        "If your Propery's Price is £" +
+          add_commas(propery_price) +
+          " and the Area of your property is " +
           area +
-          "/mt². Then the Price per Sqmeter is " +
-          sqmetre +
-          "/m². And Price per Sqfoot is " +
-          sqfoot +
-          "/ft²."
+          "/m². Then the Price per Sqmeter is £" +
+          add_commas(sqmetre) +
+          ". And Price per Sqfoot is £" +
+          add_commas(sqfoot) +
+          "."
       );
       set_is_text_input_empty(false);
     }
@@ -100,8 +113,8 @@ export default function Area_calc({ navigation }) {
   function reset_button() {
     set_propery_price("");
     set_area("");
-    set_sqmetre_result(0);
-    set_sqfoot_result(0);
+    set_sqmetre_result("£" + 0);
+    set_sqfoot_result("£" + 0);
     set_sqm(true);
     set_sqf(false);
     set_bottom_text(
@@ -125,17 +138,26 @@ export default function Area_calc({ navigation }) {
           </View>
           <View style={styles.col}>
             <Text>Propery Price</Text>
-            <TextInput
+            <TextInputMask
+              type={"money"}
+              options={{
+                precision: 0,
+                separator: ".",
+                delimiter: ",",
+                unit: "£",
+                suffixUnit: ""
+              }}
               style={
                 is_text_input_empty
                   ? styles.empty_text_input_style
                   : styles.text_input_style
               }
-              keyboardType="numeric"
               value={propery_price}
               textAlign={"center"}
-              placeholder={"£250000"}
-              onChangeText={propery_price => set_propery_price(propery_price)}
+              hintText="Some placeholder"
+              includeRawValueInChangeText={true}
+              placeholder={"£250,000"}
+              onChangeText={(maskedText, rawText) => set_propery_price(rawText)}
             />
           </View>
           <View style={styles.col}>
@@ -227,7 +249,8 @@ const styles = StyleSheet.create({
     height: 35,
     maxWidth: "100%",
     borderWidth: 0.5,
-    borderRadius: 3
+    borderRadius: 3,
+    fontSize: 16
   },
   empty_text_input_style: {
     marginVertical: 5,
@@ -235,7 +258,8 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     borderWidth: 1,
     borderRadius: 3,
-    borderColor: "red"
+    borderColor: "red",
+    fontSize: 16
   },
   bottom_text: {
     // fontSize: 13,
