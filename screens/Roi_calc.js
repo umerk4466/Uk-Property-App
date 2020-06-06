@@ -15,7 +15,7 @@ const SecondRoute = () => (
 );
 
 const Three = () => (
-  <View style={[styles.scene, { backgroundColor: "#673ab7" }]} />
+  <View style={[styles.scene, { backgroundColor: "blue" }]} />
 );
 
 const initialLayout = { width: Dimensions.get("window").width };
@@ -36,7 +36,6 @@ export default function Roi_calc({ navigation }) {
 
   return (
     <TabView
-      style={{ borderColor: "red" }}
       navigationState={{ index, routes }}
       renderScene={renderScene}
       onIndexChange={setIndex}
