@@ -75,14 +75,14 @@ export default function Area_calc({ navigation }) {
       // set screen's bottom text
       set_bottom_text(
         "If your Propery's Price is £" +
-          add_commas(propery_price) +
-          " and the Area of your property is " +
-          area +
-          "/ft². Then the Price per Sqmeter is £" +
-          add_commas(sqmetre) +
-          ". And Price per Sqfoot is £" +
-          add_commas(sqfoot) +
-          "."
+        add_commas(propery_price) +
+        " and the Area of your property is " +
+        area +
+        "/ft². Then the Price per Sqmeter is £" +
+        add_commas(sqmetre) +
+        ". And Price per Sqfoot is £" +
+        add_commas(sqfoot) +
+        "."
       );
       set_is_text_input_empty(false);
     } else if (sqm == true) {
@@ -97,14 +97,14 @@ export default function Area_calc({ navigation }) {
       // set screen's bottom text
       set_bottom_text(
         "If your Propery's Price is £" +
-          add_commas(propery_price) +
-          " and the Area of your property is " +
-          area +
-          "/m². Then the Price per Sqmeter is £" +
-          add_commas(sqmetre) +
-          ". And Price per Sqfoot is £" +
-          add_commas(sqfoot) +
-          "."
+        add_commas(propery_price) +
+        " and the Area of your property is " +
+        area +
+        "/m². Then the Price per Sqmeter is £" +
+        add_commas(sqmetre) +
+        ". And Price per Sqfoot is £" +
+        add_commas(sqfoot) +
+        "."
       );
       set_is_text_input_empty(false);
     }

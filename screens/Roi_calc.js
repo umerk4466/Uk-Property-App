@@ -1,3 +1,39 @@
+// import React, { useState } from "react";
+// import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+
+
+// export default function Roi_calc({ navigation }) {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <ScrollView>
+//         <View style={styles.main_row}>
+//           <View style={styles.col}>
+//             <Text>Content goes here Or new view</Text>
+//           </View>
+//         </View>
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff"
+//   },
+//   main_row: {
+//     margin: 10
+//   },
+//   col: {
+//     marginVertical: 5
+//   }
+// });
+
+
+
+
+
+
 import React from "react";
 
 import { View, Text, StyleSheet, Dimensions } from "react-native";
@@ -5,17 +41,17 @@ import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { TabView, TabBar, SceneMap } from "react-native-tab-view";
 
 const FirstRoute = () => (
-  <View style={[styles.scene, { backgroundColor: "#ff4081" }]}>
+  <View style={[styles.scene,]}>
     <Text>Roi_calc</Text>
   </View>
 );
 
 const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: "#673ab7" }]} />
+  <View style={[styles.scene,]} />
 );
 
 const Three = () => (
-  <View style={[styles.scene, { backgroundColor: "blue" }]} />
+  <View style={[styles.scene,]} />
 );
 
 const initialLayout = { width: Dimensions.get("window").width };
@@ -52,14 +88,6 @@ export default function Roi_calc({ navigation }) {
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={initialLayout}
-      // tabBarPosition={}
-      swipeEnabled={true}
-    // tabBarPosition={"bottom"}
-    // sceneContainerStyle={{ paddingVertical: 10 }}
-    // style={{ margin: 10, borderBottomColor: "red" }}
-    // swipeVelocityImpact={29000}
-    // onSwipeEnd={(dun) => alert("jsj")}
-    // timingConfig={{ duration: 100000 }}
     />
   );
 }
@@ -69,22 +97,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-// import { StyleSheet, Text, View } from "react-native";
-
-// export default function Roi_calc({ navigation }) {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Roi_calc</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center"
-//   }
-// });
