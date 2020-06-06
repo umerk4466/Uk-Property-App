@@ -35,7 +35,7 @@ export default function HomeStack({ navigation }) {
           )
         }}
       />
-      <Stack.Screen name="Roi" component={Roi_calc} />
+      <Stack.Screen name="ROI Calculator" component={Roi_calc} />
       <Stack.Screen name="Price Per Area" component={Area_calc} />
     </Stack.Navigator>
   );

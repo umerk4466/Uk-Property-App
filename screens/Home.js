@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
         <TouchableOpacity
           style={styles.custom_button_container}
           onPress={() => {
-            navigation.navigate("Roi");
+            navigation.navigate("ROI Calculator");
           }}
         >
           <View style={styles.image_box}>
