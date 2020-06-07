@@ -11,5 +11,14 @@ export const globalstyles = StyleSheet.create({
     },
     col: {
         marginVertical: 5
+    },
+    input: {
+        marginVertical: 5,
+        height: 35,
+        // maxWidth: "100%",
+        borderWidth: 0.5,
+        borderRadius: 3,
+        fontSize: 16
+
     }
 });
