@@ -10,10 +10,13 @@ import { Formik } from 'formik'
 
 
 const ReviewBasicForm = yup.object({
-  monthly_rental: yup.number().required().positive().integer(),
-  monthly_mortgage: yup.number().positive().integer(),
-  initial_deposit: yup.number().required().positive().integer(),
-  // initial_deposit: yup.,
+  // monthly_rental: yup.number().required().positive().integer(),
+  // monthly_mortgage: yup.number().positive().integer(),
+  // initial_deposit: yup.number().required().positive().integer(),
+  // monthly_rental: yup.string().required().test('is_valid', "Please enter the valid number", (val) => {
+  //   return val === "£1"
+  // }),
+
 
 })
 
@@ -22,10 +25,10 @@ export default function Basic_roi_calc() {
   return (
     <Formik
       initialValues={{ monthly_rental: '', monthly_mortgage: '', initial_deposit: '', }}
-      // validationSchema={ReviewBasicForm}
+      validationSchema={ReviewBasicForm}
       onSubmit={(values, actions) => {
         actions.resetForm()
-        console.log(typeof (values))
+        console.log(values)
       }}
     >
       {(props) => (
@@ -34,7 +37,7 @@ export default function Basic_roi_calc() {
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
                 <Text>Monthly rental</Text>
-                <TextInputMask
+                {/* <TextInputMask
                   type={"money"}
                   options={{
                     precision: 0,
@@ -47,9 +50,18 @@ export default function Basic_roi_calc() {
                   textAlign={"center"}
                   placeholder={"£500"}
                   value={props.values.monthly_rental}
-                  includeRawValueInChangeText={true}
+                  // includeRawValueInChangeText={true}
                   onChangeText={props.handleChange('monthly_rental')}
-                />
+                /> */}
+                {/* <TextInput
+                  keyboardType={"decimal-pad"}
+                  style={globalstyles.input}
+                  textAlign={"center"}
+                  placeholder={"£500"}
+                  value={props.values.monthly_rental}
+                  // includeRawValueInChangeText={true}
+                  onChangeText={props.handleChange('monthly_rental')}
+                /> */}
 
                 <Text>Mortgage interest pcm</Text>
                 <TextInputMask
