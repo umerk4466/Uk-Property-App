@@ -1,6 +1,8 @@
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, View, TextInput, Button } from "react-native";
-// import form and form validator(formik, yup)
+import { SafeAreaView, ScrollView, Text, View, TextInput, Button } from "react-native";
+// import global styles
+import { globalstyles } from '../styles/global_styles'
+// import form and form validator(formik, yup) library
 import * as yup from 'yup'
 import { Formik } from 'formik'
 
@@ -12,10 +14,10 @@ export default function Basic_roi_calc() {
       onSubmit={values => console.log(values)}>
       {(props) => (
         // return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={globalstyles.container}>
           <ScrollView>
-            <View style={styles.main_row}>
-              <View style={styles.col}>
+            <View style={globalstyles.main_row}>
+              <View style={globalstyles.col}>
                 <TextInput
                   placeholder={"Title"}
                   value={props.values.title}
@@ -36,17 +38,3 @@ export default function Basic_roi_calc() {
     </Formik>
   )
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff"
-  },
-  main_row: {
-    margin: 10,
-  },
-  col: {
-    marginVertical: 5
-  }
-});
