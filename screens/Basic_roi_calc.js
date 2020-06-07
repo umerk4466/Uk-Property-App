@@ -1,40 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View, TextInput, Button } from "react-native";
 // import form and form validator(formik, yup)
 import * as yup from 'yup'
 import { Formik } from 'formik'
 
 
-export default props => (
-  <Formik
-    onSubmit={values => console.log(values)}>
-    {(props) => (
-      // return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View style={styles.main_row}>
-            <View style={styles.col}>
-              <TextInput
-                // keyboardType="numeric"
-                textAlign={"center"}
-                placeholder={"75m²/ft²"}
-              />
-              <TextInput
-                // keyboardType="numeric"
-                textAlign={"center"}
-                placeholder={"nect"}
-              />
-              <Button title="Reset All" />
+export default function Basic_roi_calc() {
+  return (
+    <Formik
+      initialValues={{ title: '', body: '', }}
+      onSubmit={values => console.log(values)}>
+      {(props) => (
+        // return (
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View style={styles.main_row}>
+              <View style={styles.col}>
+                <TextInput
+                  placeholder={"Title"}
+                  value={props.values.title}
+                  onChangeText={props.handleChange('title')}
+                />
+                <TextInput
+                  placeholder={"Body"}
+                  value={props.values.body}
+                  onChangeText={props.handleChange('body')}
+                />
+                <Button title="Reset All" onPress={props.handleSubmit} />
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    )
-    }
-  </Formik>
-);
-
-// export default Basic_roi_calc;
+          </ScrollView>
+        </SafeAreaView>
+      )
+      }
+    </Formik>
+  )
+}
 
 
 const styles = StyleSheet.create({
