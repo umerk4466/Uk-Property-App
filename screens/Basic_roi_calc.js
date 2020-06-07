@@ -37,7 +37,7 @@ export default function Basic_roi_calc() {
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
                 <Text>Monthly rental</Text>
-                {/* <TextInputMask
+                <TextInputMask
                   type={"money"}
                   options={{
                     precision: 0,
@@ -52,7 +52,8 @@ export default function Basic_roi_calc() {
                   value={props.values.monthly_rental}
                   // includeRawValueInChangeText={true}
                   onChangeText={props.handleChange('monthly_rental')}
-                /> */}
+                />
+
                 {/* <TextInput
                   keyboardType={"decimal-pad"}
                   style={globalstyles.input}
