@@ -73,6 +73,7 @@ export default function Basic_roi_calc() {
                   placeholder={"£200"}
                   keyboardType={"decimal-pad"}
                   value={props.values.monthly_mortgage}
+                  includeRawValueInChangeText={true}
                   onChangeText={(maskedText, rawText) => {
                     props.setFieldValue('monthly_mortgage', rawText)
                   }}
@@ -93,6 +94,7 @@ export default function Basic_roi_calc() {
                   placeholder={"£500"}
                   keyboardType={"decimal-pad"}
                   value={props.values.initial_deposit}
+                  includeRawValueInChangeText={true}
                   onChangeText={(maskedText, rawText) => {
                     props.setFieldValue('initial_deposit', rawText)
                   }}
