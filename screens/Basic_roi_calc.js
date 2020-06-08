@@ -50,8 +50,8 @@ export default function Basic_roi_calc() {
                   textAlign={"center"}
                   placeholder={"£500"}
                   value={props.values.monthly_rental}
-                  // includeRawValueInChangeText={true}
-                  onChangeText={props.handleChange('monthly_rental')}
+                  includeRawValueInChangeText={true}
+                  onChangeText={(maskedText, rawText) => props.handleChange("monthly_rental")}
                 />
 
                 {/* <TextInput
