@@ -49,20 +49,14 @@ export default function Basic_roi_calc() {
                   style={globalstyles.input}
                   textAlign={"center"}
                   placeholder={"£500"}
+                  keyboardType={"decimal-pad"}
                   value={props.values.monthly_rental}
                   includeRawValueInChangeText={true}
-                  onChangeText={props.handleChange("monthly_rental")}
+                  onChangeText={(maskedText, rawText) => {
+                    // props.handleChange("monthly_rental")
+                    props.setFieldValue('monthly_rental', rawText)
+                  }}
                 />
-
-                {/* <TextInput
-                  keyboardType={"decimal-pad"}
-                  style={globalstyles.input}
-                  textAlign={"center"}
-                  placeholder={"£500"}
-                  value={props.values.monthly_rental}
-                  // includeRawValueInChangeText={true}
-                  onChangeText={props.handleChange('monthly_rental')}
-                /> */}
 
                 <Text>Mortgage interest pcm</Text>
                 <TextInputMask
@@ -77,8 +71,11 @@ export default function Basic_roi_calc() {
                   style={globalstyles.input}
                   textAlign={"center"}
                   placeholder={"£200"}
+                  keyboardType={"decimal-pad"}
                   value={props.values.monthly_mortgage}
-                  onChangeText={props.handleChange('monthly_mortgage')}
+                  onChangeText={(maskedText, rawText) => {
+                    props.setFieldValue('monthly_mortgage', rawText)
+                  }}
                 />
 
                 <Text>Initial investment (deposit)</Text>
@@ -94,8 +91,11 @@ export default function Basic_roi_calc() {
                   style={globalstyles.input}
                   textAlign={"center"}
                   placeholder={"£500"}
+                  keyboardType={"decimal-pad"}
                   value={props.values.initial_deposit}
-                  onChangeText={props.handleChange('initial_deposit')}
+                  onChangeText={(maskedText, rawText) => {
+                    props.setFieldValue('initial_deposit', rawText)
+                  }}
                 />
 
                 <Button title="Submit" onPress={props.handleSubmit} />
