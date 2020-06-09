@@ -17,9 +17,13 @@ const ReviewBasicForm = yup.object({
 export default function Basic_roi_calc() {
   return (
     <Formik
-      initialValues={{ monthly_rental: "", monthly_mortgage: "", initial_deposit: "" }}
+      initialValues={{ monthly_rental: "", monthly_mortgage: "", initial_deposit: "", final_result: 0 }}
       validationSchema={ReviewBasicForm}
       onSubmit={(values, actions) => {
+        // get all the filed data and add Basic return on investment formula
+        let annual_cash_flow = (values.monthly_rental * 12) - (values.monthly_mortgage * 12);
+        values.final_result = (annual_cash_flow / values.initial_deposit) * 100
+
         // actions.resetForm();
         // console.log(typeof values.monthly_mortgage);
         console.log(values);
@@ -31,7 +35,8 @@ export default function Basic_roi_calc() {
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
                 <View style={globalstyles.result_container}>
-                  <Text> Result </Text>
+                  <Text style={{ fontWeight: "bold", fontSize: 16 }}> Return on investment </Text>
+                  <Text style={{ fontWeight: "bold", fontSize: 18 }}> {props.values.final_result}%</Text>
                 </View>
               </View>
               <View style={globalstyles.col}>
@@ -57,7 +62,7 @@ export default function Basic_roi_calc() {
                     props.setFieldValue("monthly_rental", rawText);
                   }}
                 />
-                {props.errors.monthly_rental && props.touched.monthly_rental ? <Text style={globalstyles.error_field}>{props.errors.monthly_rental}</Text> : null}
+                {props.errors.monthly_rental && props.touched.monthly_rental ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_rental}</Text> : null}
 
 
                 <Text>Mortgage interest pcm</Text>
@@ -81,7 +86,7 @@ export default function Basic_roi_calc() {
                     props.setFieldValue("monthly_mortgage", rawText);
                   }}
                 />
-                {props.errors.monthly_mortgage && props.touched.monthly_mortgage ? <Text style={globalstyles.error_field}>{props.errors.monthly_mortgage}</Text> : null}
+                {props.errors.monthly_mortgage && props.touched.monthly_mortgage ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_mortgage}</Text> : null}
 
 
                 <Text>Initial investment (deposit)</Text>
@@ -105,7 +110,7 @@ export default function Basic_roi_calc() {
                     props.setFieldValue("initial_deposit", rawText);
                   }}
                 />
-                {props.errors.initial_deposit && props.touched.initial_deposit ? <Text style={globalstyles.error_field}>{props.errors.initial_deposit}</Text> : null}
+                {props.errors.initial_deposit && props.touched.initial_deposit ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.initial_deposit}</Text> : null}
 
                 <Button title="Submit" onPress={props.handleSubmit} />
               </View>
