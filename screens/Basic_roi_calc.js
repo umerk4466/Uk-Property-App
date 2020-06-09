@@ -20,14 +20,13 @@ export default function Basic_roi_calc() {
     <Formik
       initialValues={{ monthly_rental: "", monthly_mortgage: "", initial_deposit: "", final_result: 0 }}
       validationSchema={ReviewBasicForm}
+      enableReinitialize={true}
       onSubmit={(values, actions) => {
         // get all the filed data and add Basic return on investment formula
         let annual_cash_flow = (values.monthly_rental * 12) - (values.monthly_mortgage * 12);
-        values.final_result = (annual_cash_flow / values.initial_deposit) * 100
-        // values.setFieldValue("final_result", 2)
-        // actions.resetForm();
-        // console.log(typeof values.monthly_mortgage);
-        console.log(values);
+        let annual_roi = (annual_cash_flow / values.initial_deposit) * 100
+        // update the "final_result field"
+        actions.setFieldValue("final_result", annual_roi.toFixed(0))
       }}
     >
       {props => (
@@ -114,6 +113,9 @@ export default function Basic_roi_calc() {
                 {props.errors.initial_deposit && props.touched.initial_deposit ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.initial_deposit}</Text> : null}
 
                 <Button title="Submit" onPress={props.handleSubmit} />
+                <Text>KS</Text>
+                <Button title="Reset" onPress={props.resetForm} />
+
               </View>
             </View>
           </ScrollView>
