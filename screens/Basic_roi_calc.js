@@ -12,6 +12,7 @@ const ReviewBasicForm = yup.object({
   monthly_rental: yup.number("Must be a number").required("Monthly rental must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
   monthly_mortgage: yup.number("Must be a number").required("Mortgage must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
   initial_deposit: yup.number("Must be a number").required("Deposit must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
+  final_result: yup.number().integer()
 });
 
 export default function Basic_roi_calc() {
@@ -23,7 +24,7 @@ export default function Basic_roi_calc() {
         // get all the filed data and add Basic return on investment formula
         let annual_cash_flow = (values.monthly_rental * 12) - (values.monthly_mortgage * 12);
         values.final_result = (annual_cash_flow / values.initial_deposit) * 100
-
+        // values.setFieldValue("final_result", 2)
         // actions.resetForm();
         // console.log(typeof values.monthly_mortgage);
         console.log(values);
