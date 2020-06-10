@@ -114,7 +114,7 @@ export default function Basic_roi_calc() {
 
                 <View style={globalstyles.col}>
                   <Button title="Submit" onPress={props.handleSubmit} />
-                  <Text>KS</Text>
+                  <Text>spacs</Text>
                   <Button title="Reset" onPress={props.resetForm} />
                 </View>
 
