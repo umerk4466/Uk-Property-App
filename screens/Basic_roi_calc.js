@@ -112,9 +112,11 @@ export default function Basic_roi_calc() {
                 />
                 {props.errors.initial_deposit && props.touched.initial_deposit ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.initial_deposit}</Text> : null}
 
-                <Button title="Submit" onPress={props.handleSubmit} />
-                <Text>KS</Text>
-                <Button title="Reset" onPress={props.resetForm} />
+                <View style={globalstyles.col}>
+                  <Button title="Submit" onPress={props.handleSubmit} />
+                  <Text>KS</Text>
+                  <Button title="Reset" onPress={props.resetForm} />
+                </View>
 
               </View>
             </View>
