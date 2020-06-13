@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, ScrollView, Text, View, TextInput, } from "react-native";
 import { Button, Tooltip } from "react-native-elements";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // input field for money
 import { TextInputMask } from "react-native-masked-text";
 // import global styles
@@ -8,6 +9,7 @@ import { globalstyles } from "../styles/global_styles";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
+import { ceil } from "react-native-reanimated";
 
 const ReviewBasicForm = yup.object({
   monthly_rental: yup.number("Must be a number").required("Monthly rental must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
@@ -89,10 +91,14 @@ export default function Basic_roi_calc() {
                 />
                 {props.errors.monthly_mortgage && props.touched.monthly_mortgage ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_mortgage}</Text> : null}
 
-                <Tooltip popover={<Text>Info here</Text>}>
-                  <Text>Press me</Text>
-                </Tooltip>
-                <Text>Initial investment (deposit)</Text>
+
+
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text>Initial investment (deposit)</Text>
+                  <Tooltip popover={<Text>Hello world</Text>}>
+                    <FontAwesome name={'info'} color={"dimgray"} size={18} style={{ paddingHorizontal: 5 }}></FontAwesome>
+                  </Tooltip>
+                </View>
                 <TextInputMask
                   type={"money"}
                   options={{
