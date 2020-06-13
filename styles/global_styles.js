@@ -39,5 +39,9 @@ export const globalstyles = StyleSheet.create({
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
         elevation: 1,
+    },
+    buttons_container: {
+        borderBottomWidth: 0.5,
+        paddingVertical: 10
     }
 });
