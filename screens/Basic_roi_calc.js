@@ -1,6 +1,6 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View, TextInput } from "react-native";
-import { Button } from "react-native-elements";
+import { SafeAreaView, ScrollView, Text, View, TextInput, } from "react-native";
+import { Button, Tooltip } from "react-native-elements";
 // input field for money
 import { TextInputMask } from "react-native-masked-text";
 // import global styles
@@ -89,7 +89,9 @@ export default function Basic_roi_calc() {
                 />
                 {props.errors.monthly_mortgage && props.touched.monthly_mortgage ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_mortgage}</Text> : null}
 
-
+                <Tooltip popover={<Text>Info here</Text>}>
+                  <Text>Press me</Text>
+                </Tooltip>
                 <Text>Initial investment (deposit)</Text>
                 <TextInputMask
                   type={"money"}
