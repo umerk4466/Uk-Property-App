@@ -1,5 +1,6 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View, TextInput, Button } from "react-native";
+import { SafeAreaView, ScrollView, Text, View, TextInput } from "react-native";
+import { Button } from "react-native-elements";
 // input field for money
 import { TextInputMask } from "react-native-masked-text";
 // import global styles
@@ -35,8 +36,8 @@ export default function Basic_roi_calc() {
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
                 <View style={globalstyles.result_container}>
-                  <Text style={{ fontWeight: "bold", fontSize: 16 }}> Return on investment </Text>
-                  <Text style={{ fontWeight: "bold", fontSize: 18 }}> {props.values.final_result}%</Text>
+                  <Text style={{ fontSize: 16 }}> Return on investment </Text>
+                  <Text style={{ fontSize: 17 }}> {props.values.final_result}%</Text>
                 </View>
               </View>
               <View style={globalstyles.col}>
