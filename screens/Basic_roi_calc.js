@@ -15,7 +15,7 @@ const ReviewBasicForm = yup.object({
   monthly_rental: yup.number("Must be a number").required("Monthly rental must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
   monthly_mortgage: yup.number("Must be a number").required("Mortgage must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
   initial_deposit: yup.number("Must be a number").required("Deposit must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
-  final_result: yup.number().integer()
+  // final_result: yup.number()
 });
 
 export default function Basic_roi_calc() {
@@ -70,7 +70,7 @@ export default function Basic_roi_calc() {
                 {props.errors.monthly_rental && props.touched.monthly_rental ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_rental}</Text> : null}
 
 
-                <Tooltip height={130} popover={<Text style={{ color: "white" }}>Mortgage to pay each month for the property or enter other monthly expenses.</Text>}>
+                <Tooltip height={130} popover={<Text style={{ color: "white" }}>Mortgage of the property to pay each month or enter other monthly expenses.</Text>}>
                   <Text>Monthly Mortgage payments <FontAwesome name={'question-circle'} size={15}></FontAwesome></Text>
                 </Tooltip>
                 <TextInputMask
@@ -109,7 +109,7 @@ export default function Basic_roi_calc() {
                   }}
                   style={globalstyles.input}
                   textAlign={"center"}
-                  placeholder={"£500"}
+                  placeholder={"£10,000"}
                   keyboardType={"decimal-pad"}
                   value={props.values.initial_deposit}
                   onBlur={props.handleBlur("initial_deposit")}

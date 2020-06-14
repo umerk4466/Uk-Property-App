@@ -47,7 +47,6 @@ export const globalstyles = StyleSheet.create({
         paddingTop: 5,
     },
     calculator_explanation_text: {
-        // fontSize: 13,
         marginTop: 5,
         fontStyle: "italic"
     }
