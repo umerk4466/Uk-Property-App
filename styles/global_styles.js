@@ -41,8 +41,14 @@ export const globalstyles = StyleSheet.create({
         elevation: 1,
     },
     buttons_container: {
-        // marginTop: 10,
-        // borderTopWidth: 0.5,
-        paddingTop: 20,
+        height: 120,
+        justifyContent: "space-evenly",
+        borderBottomWidth: 0.5,
+        paddingTop: 5,
+    },
+    calculator_explanation_text: {
+        // fontSize: 13,
+        marginTop: 5,
+        fontStyle: "italic"
     }
 });
