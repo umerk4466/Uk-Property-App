@@ -14,9 +14,9 @@ export const globalstyles = StyleSheet.create({
         marginVertical: 5
     },
     input: {
-        marginVertical: 5,
+        marginTop: 5,
+        marginBottom: 3,
         height: 32,
-        // maxWidth: "100%",
         borderWidth: 0.5,
         borderRadius: 2,
         fontSize: 16,
