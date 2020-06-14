@@ -43,7 +43,9 @@ export default function Basic_roi_calc() {
                 </View>
               </View>
               <View style={globalstyles.col}>
-                <Text>Monthly rental</Text>
+                <Tooltip height={100} popover={<Text style={{ color: "white" }}>Monthly rent of the property which will come in your pocket after all the expenses.</Text>}>
+                  <Text>Monthly rent of the property <FontAwesome name={'question-circle'} size={15}></FontAwesome></Text>
+                </Tooltip>
                 <TextInputMask
                   type={"money"}
                   options={{
@@ -68,7 +70,9 @@ export default function Basic_roi_calc() {
                 {props.errors.monthly_rental && props.touched.monthly_rental ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_rental}</Text> : null}
 
 
-                <Text>Mortgage interest pcm</Text>
+                <Tooltip popover={<Text style={{ color: "white" }}>Mortgage to pay each month for this property or enter other monthly expenses.</Text>}>
+                  <Text>Monthly Mortgage payments <FontAwesome name={'question-circle'} size={15}></FontAwesome></Text>
+                </Tooltip>
                 <TextInputMask
                   type={"money"}
                   options={{
@@ -91,14 +95,9 @@ export default function Basic_roi_calc() {
                 />
                 {props.errors.monthly_mortgage && props.touched.monthly_mortgage ? <Text style={globalstyles.error_field} numberOfLines={1}>{props.errors.monthly_mortgage}</Text> : null}
 
-
-
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <Text>Initial investment (deposit)</Text>
-                  <Tooltip popover={<Text>Hello world</Text>}>
-                    <FontAwesome name={'info'} color={"dimgray"} size={18} style={{ paddingHorizontal: 5 }}></FontAwesome>
-                  </Tooltip>
-                </View>
+                <Tooltip popover={<Text style={{ color: "white" }}>Your saved money which you will use as a deposit to buy this property.</Text>}>
+                  <Text>Initial investment (deposit) <FontAwesome name={'question-circle'} size={15}></FontAwesome></Text>
+                </Tooltip>
                 <TextInputMask
                   type={"money"}
                   options={{
