@@ -9,7 +9,6 @@ import { globalstyles } from "../styles/global_styles";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
-import { ceil } from "react-native-reanimated";
 
 const ReviewBasicForm = yup.object({
   monthly_rental: yup.number("Must be a number").required("Monthly rental must be at least of £0").integer("Must be integer").typeError("Must enter a number again"),
