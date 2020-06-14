@@ -41,7 +41,8 @@ export const globalstyles = StyleSheet.create({
         elevation: 1,
     },
     buttons_container: {
-        borderBottomWidth: 0.5,
-        paddingVertical: 10
+        // marginTop: 10,
+        // borderTopWidth: 0.5,
+        paddingTop: 20,
     }
 });
