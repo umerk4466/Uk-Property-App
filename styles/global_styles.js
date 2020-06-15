@@ -16,7 +16,6 @@ export const globalstyles = StyleSheet.create({
     input: {
         marginTop: 5,
         marginBottom: 3,
-        height: 32,
         borderWidth: 0.5,
         borderRadius: 2,
         fontSize: 16,
