@@ -31,19 +31,14 @@ const ReviewBasicForm = yup.object({
 export default function Basic_roi_calc() {
   return (
     <Formik
-      initialValues={{
-        monthly_rental: "",
-        monthly_mortgage: "",
-        initial_deposit: "",
-        final_result: 0
-      }}
+      initialValues={{ monthly_rental: "", monthly_mortgage: "", initial_deposit: "", final_result: 0 }}
       validationSchema={ReviewBasicForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
         // get all the filed data and add Basic return on investment formula
-        let annual_cash_flow =
+        const annual_cash_flow =
           values.monthly_rental * 12 - values.monthly_mortgage * 12;
-        let annual_roi = (annual_cash_flow / values.initial_deposit) * 100;
+        const annual_roi = (annual_cash_flow / values.initial_deposit) * 100;
         // update the "final_result field"
         actions.setFieldValue("final_result", annual_roi.toFixed(0));
       }}
