@@ -8,7 +8,7 @@ import {
   ScrollView
 } from "react-native";
 
-export default function Home({ navigation }) {
+export default function Home_screen({ navigation }) {
   return (
     <ScrollView>
       <View style={styles.container}>

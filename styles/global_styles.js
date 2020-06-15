@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { shadow } from "react-native-paper";
 
 // styles used in all the pages
 export const globalstyles = StyleSheet.create({

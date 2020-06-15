@@ -1,15 +1,13 @@
 import React from "react";
-
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Dimensions } from "react-native";
 // import for tab view
 import { TabView, TabBar, SceneMap } from "react-native-tab-view";
-
 // import calculator pages/components
-import Basic_roi_calc from "./Basic_roi_calc"
+import Basic_roi_tab from "./Basic_roi_tab"
 
 // tabs imported
 const BasicRoiRoute = () => (
-  <Basic_roi_calc />
+  <Basic_roi_tab />
 );
 
 const AdvanceRoiRoute = () => (
@@ -20,7 +18,7 @@ const AdvanceRoiRoute = () => (
 // tabview setting
 const initialLayout = { width: Dimensions.get("window").width };
 
-export default function Roi_calc({ navigation }) {
+export default function Roi_screen({ navigation }) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 1, title: "Basic" },

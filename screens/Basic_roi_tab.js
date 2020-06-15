@@ -28,7 +28,7 @@ const ReviewBasicForm = yup.object({
   // final_result: yup.number()
 });
 
-export default function Basic_roi_calc() {
+export default function Basic_roi_tab() {
   return (
     <Formik
       initialValues={{ monthly_rental: "", monthly_mortgage: "", initial_deposit: "", final_result: 0 }}
