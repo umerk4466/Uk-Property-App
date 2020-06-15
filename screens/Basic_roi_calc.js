@@ -12,7 +12,7 @@ import { Formik } from "formik";
 const ReviewBasicForm = yup.object({
   monthly_rental: yup
     .number("Must be a number")
-    .required("Monthly rental must be at least of £0")
+    .required("Monthly rent must be at least of £0")
     .integer("Must be integer")
     .typeError("Must enter a number again"),
   monthly_mortgage: yup
@@ -55,10 +55,7 @@ export default function Basic_roi_calc() {
               <View style={globalstyles.col}>
                 <View style={globalstyles.result_container}>
                   <Text style={{ fontSize: 16 }}> Return on investment </Text>
-                  <Text style={{ fontSize: 17 }}>
-                    {" "}
-                    {props.values.final_result}%
-                  </Text>
+                  <Text style={{ fontSize: 17 }}>{props.values.final_result}%</Text>
                 </View>
               </View>
               <View style={globalstyles.col}>
@@ -88,7 +85,7 @@ export default function Basic_roi_calc() {
                   }}
                 />
                 {props.errors.monthly_rental && props.touched.monthly_rental ? (
-                  <Text style={globalstyles.error_field} numberOfLines={1}>
+                  <Text style={globalstyles.error_field}>
                     {props.errors.monthly_rental}
                   </Text>
                 ) : null}
@@ -116,7 +113,7 @@ export default function Basic_roi_calc() {
                 />
                 {props.errors.monthly_mortgage &&
                 props.touched.monthly_mortgage ? (
-                  <Text style={globalstyles.error_field} numberOfLines={1}>
+                  <Text style={globalstyles.error_field}>
                     {props.errors.monthly_mortgage}
                   </Text>
                 ) : null}
@@ -144,25 +141,22 @@ export default function Basic_roi_calc() {
                 />
                 {props.errors.initial_deposit &&
                 props.touched.initial_deposit ? (
-                  <Text style={globalstyles.error_field} numberOfLines={1}>
+                  <Text style={globalstyles.error_field}>
                     {props.errors.initial_deposit}
                   </Text>
                 ) : null}
+              </View>
 
-                <View style={globalstyles.col}>
-                  <View style={globalstyles.buttons_container}>
-                    <Button
-                      title="Calculate ROI"
-                      onPress={props.handleSubmit}
-                    />
-                    <Button title="Reset" onPress={props.resetForm} />
-                  </View>
-                  <Text style={globalstyles.calculator_explanation_text}>
-                    ROI (Return on Investment) measures the gain or loss
-                    generated on an investment relative to the amount of money
-                    invested.
-                  </Text>
+              <View style={globalstyles.col}>
+                <View style={globalstyles.buttons_container}>
+                  <Button title="Calculate ROI" onPress={props.handleSubmit} />
+                  <Button title="Reset" onPress={props.resetForm} />
                 </View>
+                <Text style={globalstyles.calculator_explanation_text}>
+                  ROI (Return on Investment) measures the gain or loss
+                  generated on an investment relative to the amount of money
+                  invested.
+                </Text>
               </View>
             </View>
           </ScrollView>
