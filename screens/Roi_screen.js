@@ -4,6 +4,8 @@ import { View, Dimensions } from "react-native";
 import { TabView, TabBar, SceneMap } from "react-native-tab-view";
 // import calculator pages/components
 import Basic_roi_tab from "./Basic_roi_tab"
+import Advance_roi_tab from "./Advance_roi_tab"
+
 
 // tabs imported
 const BasicRoiRoute = () => (
@@ -11,7 +13,7 @@ const BasicRoiRoute = () => (
 );
 
 const AdvanceRoiRoute = () => (
-  <View />
+  <Advance_roi_tab />
 );
 ;
 
