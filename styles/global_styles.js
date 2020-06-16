@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { overlay } from "react-native-paper";
 
 // styles used in all the pages
 export const globalstyles = StyleSheet.create({
@@ -10,7 +11,7 @@ export const globalstyles = StyleSheet.create({
         margin: 10,
     },
     col: {
-        marginVertical: 5
+        marginVertical: 5,
     },
     input: {
         marginTop: 5,
@@ -18,6 +19,7 @@ export const globalstyles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 2,
         fontSize: 16,
+        flex : 1
     },
     error_field: {
         color: "crimson",
@@ -47,5 +49,17 @@ export const globalstyles = StyleSheet.create({
     calculator_explanation_text: {
         marginTop: 5,
         fontStyle: "italic"
+    },
+    single_line_input_view:{
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    signle_line_input_text:{
+        width:"40%",
+    },
+    heading_text:{
+        backgroundColor: "lightgrey",
+        marginVertical: 5,
+        padding: 5,
     }
 });
