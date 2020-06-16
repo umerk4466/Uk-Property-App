@@ -39,6 +39,7 @@ export default function Advance_roi_tab() {
         refurb_costs: "",
         stamp_duty: "",
         other_costs: "",
+        monthly_mortgage: "",
         letting_agent_percentage: "",
         insurance: "",
         maintenance: "",
@@ -68,7 +69,7 @@ export default function Advance_roi_tab() {
 
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
-                    Purchase price :{" "}
+                    Purchase price (Deposit) :{" "}
                   </Text>
                   <TextInputMask
                     type={"money"}
@@ -81,7 +82,7 @@ export default function Advance_roi_tab() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
+                    placeholder={"£150,000"}
                     keyboardType={"decimal-pad"}
                     value={props.values.purchase_price}
                     onBlur={props.handleBlur("purchase_price")}
@@ -112,7 +113,7 @@ export default function Advance_roi_tab() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
+                    placeholder={"£900"}
                     keyboardType={"decimal-pad"}
                     value={props.values.monthly_rent}
                     onBlur={props.handleBlur("monthly_rent")}
@@ -145,7 +146,7 @@ export default function Advance_roi_tab() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
+                    placeholder={"£650"}
                     keyboardType={"decimal-pad"}
                     value={props.values.solicitor_fees}
                     onBlur={props.handleBlur("solicitor_fees")}
@@ -288,6 +289,38 @@ export default function Advance_roi_tab() {
                 <Text style={globalstyles.heading_text}>
                   Running costs (monthly)
                 </Text>
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Mortgage pcm :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.monthly_mortgage}
+                    onBlur={props.handleBlur("monthly_mortgage")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("monthly_mortgage", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.monthly_mortgage &&
+                props.touched.monthly_mortgage ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.monthly_mortgage}
+                  </Text>
+                ) : null}
 
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
