@@ -31,34 +31,45 @@ const ReviewAdvanceForm = yup.object({
 export default function Advance_roi_tab() {
   return (
     <Formik
-      initialValues={{ purchase_price: "", monthly_rent: "", initial_deposit: "", final_result: 0 }}
+      initialValues={{
+        purchase_price: "",
+        monthly_rent: "",
+        solicitor_fees: "",
+        survey_fees: "",
+        refurb_costs: "",
+        stamp_duty: "",
+        other_costs: "",
+        letting_agent_percentage: "",
+        insurance: "",
+        maintenance: "",
+        ground_rent: "",
+        service_charges: "",
+        void_period_percentage: "",
+        final_result: 0,
+      }}
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
-      onSubmit={(values, actions) => {
-        // // get all the filed data and add Basic return on investment formula
-        // const annual_cash_flow =
-        //   values.monthly_rental * 12 - values.monthly_mortgage * 12;
-        // const annual_roi = (annual_cash_flow / values.initial_deposit) * 100;
-        // // update the "final_result field"
-        // actions.setFieldValue("final_result", annual_roi.toFixed(0));
-      }}
+      onSubmit={(values, actions) => {}}
     >
-      {props => (
+      {(props) => (
         <SafeAreaView style={globalstyles.container}>
           <ScrollView>
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
                 <View style={globalstyles.result_container}>
                   <Text style={{ fontSize: 16 }}> Return on investment </Text>
-                  <Text style={{ fontSize: 17 }}>{props.values.final_result}%</Text>
+                  <Text style={{ fontSize: 17 }}>
+                    {props.values.final_result}%
+                  </Text>
                 </View>
               </View>
               <View style={globalstyles.col}>
-
-                <Text style={globalstyles.heading_text}>Advance Calculator </Text>
+                <Text style={globalstyles.heading_text}>Property Details </Text>
 
                 <View style={globalstyles.single_line_input_view}>
-                <Text style={globalstyles.signle_line_input_text}>Purchase price :	 </Text>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Purchase price :{" "}
+                  </Text>
                   <TextInputMask
                     type={"money"}
                     options={{
@@ -66,7 +77,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -76,7 +87,6 @@ export default function Advance_roi_tab() {
                     onBlur={props.handleBlur("purchase_price")}
                     includeRawValueInChangeText={true}
                     onChangeText={(maskedText, rawText) => {
-                      // props.handleChange("purchase_price")
                       props.setFieldValue("purchase_price", rawText);
                     }}
                   />
@@ -86,9 +96,11 @@ export default function Advance_roi_tab() {
                     {props.errors.purchase_price}
                   </Text>
                 ) : null}
-                
+
                 <View style={globalstyles.single_line_input_view}>
-                <Text style={globalstyles.signle_line_input_text}>Monthly rent :	 </Text>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Monthly rent :{" "}
+                  </Text>
                   <TextInputMask
                     type={"money"}
                     options={{
@@ -96,7 +108,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -106,7 +118,6 @@ export default function Advance_roi_tab() {
                     onBlur={props.handleBlur("monthly_rent")}
                     includeRawValueInChangeText={true}
                     onChangeText={(maskedText, rawText) => {
-                      // props.handleChange("monthly_rent")
                       props.setFieldValue("monthly_rent", rawText);
                     }}
                   />
@@ -116,8 +127,199 @@ export default function Advance_roi_tab() {
                     {props.errors.monthly_rent}
                   </Text>
                 ) : null}
-                
+
                 <Text style={globalstyles.heading_text}>Purchase Costs </Text>
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Solicitor fees :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.solicitor_fees}
+                    onBlur={props.handleBlur("solicitor_fees")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("solicitor_fees", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.solicitor_fees && props.touched.solicitor_fees ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.solicitor_fees}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Survey fees :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.survey_fees}
+                    onBlur={props.handleBlur("survey_fees")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("survey_fees", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.survey_fees && props.touched.survey_fees ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.survey_fees}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Refurb costs :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.refurb_costs}
+                    onBlur={props.handleBlur("refurb_costs")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("refurb_costs", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.refurb_costs && props.touched.refurb_costs ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.refurb_costs}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Stamp duty :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.stamp_duty}
+                    onBlur={props.handleBlur("stamp_duty")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("stamp_duty", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.stamp_duty && props.touched.stamp_duty ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.stamp_duty}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Other costs :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.other_costs}
+                    onBlur={props.handleBlur("other_costs")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("other_costs", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.other_costs && props.touched.other_costs ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.other_costs}
+                  </Text>
+                ) : null}
+
+                <Text style={globalstyles.heading_text}>
+                  Running costs (monthly)
+                </Text>
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Letting agent (%) :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"£500"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.letting_agent_percentage}
+                    onBlur={props.handleBlur("letting_agent_percentage")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("letting_agent_percentage", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.letting_agent_percentage &&
+                props.touched.letting_agent_percentage ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.letting_agent_percentage}
+                  </Text>
+                ) : null}
               </View>
 
               <View style={globalstyles.col}>
@@ -126,9 +328,8 @@ export default function Advance_roi_tab() {
                   <Button title="Reset" onPress={props.resetForm} />
                 </View>
                 <Text style={globalstyles.calculator_explanation_text}>
-                  ROI (Return on Investment) measures the gain or loss
-                  generated on an investment relative to the amount of money
-                  invested.
+                  ROI (Return on Investment) measures the gain or loss generated
+                  on an investment relative to the amount of money invested.
                 </Text>
               </View>
             </View>

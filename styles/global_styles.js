@@ -58,7 +58,7 @@ export const globalstyles = StyleSheet.create({
         width:"40%",
     },
     heading_text:{
-        backgroundColor: "lightgrey",
+        backgroundColor: "whitesmoke",
         marginVertical: 5,
         padding: 5,
     }
