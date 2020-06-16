@@ -294,17 +294,13 @@ export default function Advance_roi_tab() {
                     Letting agent (%) :{" "}
                   </Text>
                   <TextInputMask
-                    type={"money"}
+                    type={"custom"}
                     options={{
-                      precision: 0,
-                      separator: ".",
-                      delimiter: ",",
-                      unit: "£",
-                      suffixUnit: "",
+                      mask: "999",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
+                    placeholder={"10%"}
                     keyboardType={"decimal-pad"}
                     value={props.values.letting_agent_percentage}
                     onBlur={props.handleBlur("letting_agent_percentage")}
@@ -318,6 +314,159 @@ export default function Advance_roi_tab() {
                 props.touched.letting_agent_percentage ? (
                   <Text style={globalstyles.error_field}>
                     {props.errors.letting_agent_percentage}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Insurance :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"50£"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.insurance}
+                    onBlur={props.handleBlur("insurance")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("insurance", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.insurance && props.touched.insurance ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.insurance}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Maintenance :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"30£"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.maintenance}
+                    onBlur={props.handleBlur("maintenance")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("maintenance", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.maintenance && props.touched.maintenance ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.maintenance}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Ground rent :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"30£"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.ground_rent}
+                    onBlur={props.handleBlur("ground_rent")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("ground_rent", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.ground_rent && props.touched.ground_rent ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.ground_rent}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Service charges :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: "",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"30£"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.service_charges}
+                    onBlur={props.handleBlur("service_charges")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("service_charges", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.service_charges &&
+                props.touched.service_charges ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.service_charges}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
+                    Void period (%) :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"custom"}
+                    options={{
+                      mask: "999",
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    placeholder={"30£"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.void_period_percentage}
+                    onBlur={props.handleBlur("void_period_percentage")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("void_period_percentage", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.void_period_percentage &&
+                props.touched.void_period_percentage ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.void_period_percentage}
                   </Text>
                 ) : null}
               </View>
