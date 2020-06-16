@@ -476,10 +476,6 @@ export default function Advance_roi_tab() {
                   <Button title="Calculate ROI" onPress={props.handleSubmit} />
                   <Button title="Reset" onPress={props.resetForm} />
                 </View>
-                <Text style={globalstyles.calculator_explanation_text}>
-                  ROI (Return on Investment) measures the gain or loss generated
-                  on an investment relative to the amount of money invested.
-                </Text>
               </View>
             </View>
           </ScrollView>
