@@ -16,7 +16,7 @@ export const globalstyles = StyleSheet.create({
   input: {
     marginTop: 5,
     marginBottom: 3,
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 1,
     borderRadius: 2,
     fontSize: 16,
     flex: 1,
@@ -58,7 +58,7 @@ export const globalstyles = StyleSheet.create({
     alignItems: "center",
   },
   signle_line_input_text: {
-    width: "55%",
+    width: "40%",
   },
   heading_text: {
     backgroundColor: "whitesmoke",

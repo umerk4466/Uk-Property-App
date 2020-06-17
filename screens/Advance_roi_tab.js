@@ -10,22 +10,27 @@ import * as yup from "yup";
 import { Formik } from "formik";
 
 const ReviewAdvanceForm = yup.object({
-  // monthly_rental: yup
-  //   .number("Must be a number")
-  //   .required("Monthly rent must be at least of £0")
-  //   .integer("Must be integer")
-  //   .typeError("Must enter a number again"),
-  // monthly_mortgage: yup
-  //   .number("Must be a number")
-  //   .required("Mortgage must be at least of £0")
-  //   .integer("Must be integer")
-  //   .typeError("Must enter a number again"),
-  // initial_deposit: yup
-  //   .number("Must be a number")
-  //   .required("Deposit must be at least of £0")
-  //   .integer("Must be integer")
-  //   .typeError("Must enter a number again")
-  // // final_result: yup.number()
+  purchase_price: yup
+    .number("Must be a number")
+    .required("Please enter purchase price")
+    .integer("Must be an integer")
+    .positive("Purchase price cannot be only £0")
+    .typeError("Please enter purchase price again"),
+  monthly_rent: yup
+    .number("Must be a number")
+    .required("Please enter atleast £0 to proceed")
+    .integer("Must be an integer")
+    .typeError("Please enter monthly rent again"),
+  solicitor_fees: yup
+    .number("Must be a number")
+    .required("Please enter atleast £0 to proceed")
+    .integer("Must be an integer")
+    .typeError("Please enter fees again"),
+  survey_fees: yup
+    .number("Must be a number")
+    .required("Please enter atleast £0 to proceed")
+    .integer("Must be an integer")
+    .typeError("Please enter fees again"),
 });
 
 export default function Advance_roi_tab() {
@@ -69,7 +74,7 @@ export default function Advance_roi_tab() {
 
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
-                    Purchase price (Deposit) :{" "}
+                    Purchase price :{" "}
                   </Text>
                   <TextInputMask
                     type={"money"}
