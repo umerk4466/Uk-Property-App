@@ -30,10 +30,10 @@ const ReviewAdvanceForm = yup.object({
     .number("Must be a number")
     .required("Please enter atleast £0 to proceed")
     .integer("Must be an integer")
-    .typeError("Please enter fees again"),
+    .typeError("Please enter fees again")
 });
 
-export default function Advance_roi_tab() {
+export default function Net_rental_yield_screen() {
   return (
     <Formik
       initialValues={{
@@ -51,13 +51,13 @@ export default function Advance_roi_tab() {
         ground_rent: "",
         service_charges: "",
         void_period_percentage: "",
-        final_result: 0,
+        final_result: 0
       }}
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {}}
     >
-      {(props) => (
+      {props => (
         <SafeAreaView style={globalstyles.container}>
           <ScrollView>
             <View style={globalstyles.main_row}>
@@ -83,7 +83,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -114,7 +114,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -147,7 +147,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -178,7 +178,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -209,7 +209,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -240,7 +240,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -271,7 +271,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -306,7 +306,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -334,7 +334,7 @@ export default function Advance_roi_tab() {
                   <TextInputMask
                     type={"custom"}
                     options={{
-                      mask: "999",
+                      mask: "999"
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -366,7 +366,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -397,7 +397,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -428,7 +428,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -459,7 +459,7 @@ export default function Advance_roi_tab() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -487,7 +487,7 @@ export default function Advance_roi_tab() {
                   <TextInputMask
                     type={"custom"}
                     options={{
-                      mask: "999",
+                      mask: "999"
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}

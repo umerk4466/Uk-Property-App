@@ -32,6 +32,26 @@ export default function Home_screen({ navigation }) {
         </TouchableOpacity>
         <View style={styles.bottom_line}></View>
 
+        {/* Net Rental Yield Calculator */}
+        <TouchableOpacity
+          style={styles.custom_button_container}
+          onPress={() => {
+            navigation.navigate("Net Rental Yield");
+          }}
+        >
+          <View style={styles.image_box}>
+            <Image
+              source={require("../images/net_rental_yield.png")}
+              style={styles.ImageIconStyle}
+            />
+          </View>
+          <View style={styles.text_box}>
+            <Text>Net Rental Yield</Text>
+            <Text style={{ fontSize: 11 }}>Investment Property Calculator</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.bottom_line}></View>
+
         {/* MORTGAGE CALCULATOR */}
         <TouchableOpacity
           style={styles.custom_button_container}
