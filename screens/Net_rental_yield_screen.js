@@ -63,7 +63,7 @@ export default function Net_rental_yield_screen() {
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
                 <View style={globalstyles.result_container}>
-                  <Text style={{ fontSize: 16 }}> Return on investment </Text>
+                  <Text style={{ fontSize: 16 }}> Net yield </Text>
                   <Text style={{ fontSize: 17 }}>
                     {props.values.final_result}%
                   </Text>
@@ -74,7 +74,7 @@ export default function Net_rental_yield_screen() {
 
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
-                    Purchase price :{" "}
+                    Investment (Deposit) :{" "}
                   </Text>
                   <TextInputMask
                     type={"money"}
