@@ -9,53 +9,50 @@ import { globalstyles } from "../styles/global_styles";
 import * as yup from "yup";
 import { Formik } from "formik";
 
+// variables for error messages
+let type_error_message = "Please enter value again";
+const number_error_message = "Value must be a number";
+// define formik form validator
 const ReviewAdvanceForm = yup.object({
   purchase_price: yup
-    .number("Must be a number")
-    .required("Please enter purchase price")
-    .integer("Must be an integer")
-    .positive("Purchase price cannot be only £0")
-    .typeError("Please enter purchase price again"),
-  monthly_rent: yup
-    .number("Must be a number")
-    .required("Please enter atleast £0 to proceed")
-    .integer("Must be an integer")
-    .typeError("Please enter monthly rent again"),
+    .number(number_error_message)
+    .positive("Purchase price cannot be £0")
+    .typeError(type_error_message),
+  monthly_rent: yup.number(number_error_message).typeError(type_error_message),
   solicitor_fees: yup
-    .number("Must be a number")
-    .required("Please enter atleast £0 to proceed")
-    .integer("Must be an integer")
-    .typeError("Please enter fees again"),
-  survey_fees: yup
-    .number("Must be a number")
-    .required("Please enter atleast £0 to proceed")
-    .integer("Must be an integer")
-    .typeError("Please enter fees again")
+    .number(number_error_message)
+    .typeError(type_error_message),
+  survey_fees: yup.number(number_error_message).typeError(type_error_message),
+  letting_agent_percentage: yup
+    .number(number_error_message)
+    .typeError(type_error_message)
 });
 
 export default function Net_rental_yield_screen() {
   return (
     <Formik
       initialValues={{
-        purchase_price: "",
-        monthly_rent: "",
-        solicitor_fees: "",
-        survey_fees: "",
-        refurb_costs: "",
-        stamp_duty: "",
-        other_costs: "",
-        monthly_mortgage: "",
-        letting_agent_percentage: "",
-        insurance: "",
-        maintenance: "",
-        ground_rent: "",
-        service_charges: "",
-        void_period_percentage: "",
+        purchase_price: 0,
+        monthly_rent: 0,
+        solicitor_fees: 0,
+        survey_fees: 0,
+        refurb_costs: 0,
+        stamp_duty: 0,
+        other_costs: 0,
+        monthly_mortgage: 0,
+        letting_agent_percentage: "10",
+        insurance: 0,
+        maintenance: 0,
+        ground_rent: 0,
+        service_charges: 0,
+        void_period_percentage: "0",
         final_result: 0
       }}
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
-      onSubmit={(values, actions) => {}}
+      onSubmit={(values, actions) => {
+        alert(typeof values.letting_agent_percentage);
+      }}
     >
       {props => (
         <SafeAreaView style={globalstyles.container}>
@@ -87,7 +84,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£150,000"}
                     keyboardType={"decimal-pad"}
                     value={props.values.purchase_price}
                     onBlur={props.handleBlur("purchase_price")}
@@ -118,7 +114,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£900"}
                     keyboardType={"decimal-pad"}
                     value={props.values.monthly_rent}
                     onBlur={props.handleBlur("monthly_rent")}
@@ -151,7 +146,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£650"}
                     keyboardType={"decimal-pad"}
                     value={props.values.solicitor_fees}
                     onBlur={props.handleBlur("solicitor_fees")}
@@ -182,7 +176,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
                     keyboardType={"decimal-pad"}
                     value={props.values.survey_fees}
                     onBlur={props.handleBlur("survey_fees")}
@@ -213,7 +206,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
                     keyboardType={"decimal-pad"}
                     value={props.values.refurb_costs}
                     onBlur={props.handleBlur("refurb_costs")}
@@ -244,7 +236,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
                     keyboardType={"decimal-pad"}
                     value={props.values.stamp_duty}
                     onBlur={props.handleBlur("stamp_duty")}
@@ -275,7 +266,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
                     keyboardType={"decimal-pad"}
                     value={props.values.other_costs}
                     onBlur={props.handleBlur("other_costs")}
@@ -310,7 +300,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"£500"}
                     keyboardType={"decimal-pad"}
                     value={props.values.monthly_mortgage}
                     onBlur={props.handleBlur("monthly_mortgage")}
@@ -338,7 +327,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"10%"}
                     keyboardType={"decimal-pad"}
                     value={props.values.letting_agent_percentage}
                     onBlur={props.handleBlur("letting_agent_percentage")}
@@ -370,7 +358,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"50£"}
                     keyboardType={"decimal-pad"}
                     value={props.values.insurance}
                     onBlur={props.handleBlur("insurance")}
@@ -401,7 +388,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"30£"}
                     keyboardType={"decimal-pad"}
                     value={props.values.maintenance}
                     onBlur={props.handleBlur("maintenance")}
@@ -432,7 +418,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"30£"}
                     keyboardType={"decimal-pad"}
                     value={props.values.ground_rent}
                     onBlur={props.handleBlur("ground_rent")}
@@ -463,7 +448,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"30£"}
                     keyboardType={"decimal-pad"}
                     value={props.values.service_charges}
                     onBlur={props.handleBlur("service_charges")}
@@ -491,7 +475,6 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
-                    placeholder={"30£"}
                     keyboardType={"decimal-pad"}
                     value={props.values.void_period_percentage}
                     onBlur={props.handleBlur("void_period_percentage")}
