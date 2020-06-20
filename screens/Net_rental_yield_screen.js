@@ -9,23 +9,33 @@ import { globalstyles } from "../styles/global_styles";
 import * as yup from "yup";
 import { Formik } from "formik";
 
-// variables for error messages
-let type_error_message = "Please enter value again";
-const number_error_message = "Value must be a number";
+// define varibale for storing all the common validation errors
+const yup_common_validations = yup
+  .number("Please enter value again")
+  .typeError("Value must be a number");
+
 // define formik form validator
 const ReviewAdvanceForm = yup.object({
-  purchase_price: yup
-    .number(number_error_message)
-    .positive("Purchase price cannot be £0")
-    .typeError(type_error_message),
-  monthly_rent: yup.number(number_error_message).typeError(type_error_message),
-  solicitor_fees: yup
-    .number(number_error_message)
-    .typeError(type_error_message),
-  survey_fees: yup.number(number_error_message).typeError(type_error_message),
-  letting_agent_percentage: yup
-    .number(number_error_message)
-    .typeError(type_error_message)
+  purchase_price: yup_common_validations.positive(
+    "Purchase price cannot be £0"
+  ),
+  monthly_rent: yup_common_validations,
+  solicitor_fees: yup_common_validations,
+  survey_fees: yup_common_validations,
+  refurb_costs: yup_common_validations,
+  stamp_duty: yup_common_validations,
+  other_costs: yup_common_validations,
+  monthly_mortgage: yup_common_validations,
+  letting_agent_percentage: yup_common_validations.required(
+    "Please enter letting agent percentage or enter 0"
+  ),
+  insurance: yup_common_validations,
+  maintenance: yup_common_validations,
+  ground_rent: yup_common_validations,
+  service_charges: yup_common_validations,
+  void_period_percentage: yup_common_validations.required(
+    "Please enter void percentage or enter 0"
+  )
 });
 
 export default function Net_rental_yield_screen() {
@@ -40,18 +50,18 @@ export default function Net_rental_yield_screen() {
         stamp_duty: 0,
         other_costs: 0,
         monthly_mortgage: 0,
-        letting_agent_percentage: "10",
+        letting_agent_percentage: "",
         insurance: 0,
         maintenance: 0,
         ground_rent: 0,
         service_charges: 0,
-        void_period_percentage: "0",
+        void_period_percentage: "",
         final_result: 0
       }}
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
-        alert(typeof values.letting_agent_percentage);
+        alert(values.letting_agent_percentage);
       }}
     >
       {props => (
@@ -326,6 +336,7 @@ export default function Net_rental_yield_screen() {
                       mask: "999"
                     }}
                     style={globalstyles.input}
+                    placeholder={"10%"}
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.letting_agent_percentage}
@@ -475,6 +486,7 @@ export default function Net_rental_yield_screen() {
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
+                    placeholder={"8%"}
                     keyboardType={"decimal-pad"}
                     value={props.values.void_period_percentage}
                     onBlur={props.handleBlur("void_period_percentage")}
