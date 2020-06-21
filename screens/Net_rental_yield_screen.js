@@ -12,6 +12,7 @@ import { Formik } from "formik";
 // define varibale for storing all the common validation errors
 const yup_number = yup
   .number("Value must be a number")
+  .integer("Must be an integer")
   .typeError("Please enter value again");
 
 // define formik form validator
@@ -59,7 +60,23 @@ export default function Net_rental_yield_screen() {
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
-        console.log(values);
+        // calculations
+        get monthly running cost of letting agent and void period
+        let monthly_percentage_cost =
+          (values.monthly_rent *
+            (parseInt(values.letting_agent_percentage) +
+              parseInt(values.void_period_percentage))) /
+          100;
+          
+        // total montly running cost
+        let monthly_running_costs =
+          values.monthly_mortgage +
+          values.insurance +
+          values.maintenance +
+          values.ground_rent +
+          values.service_charges +
+          monthly_percentage_cost;
+        alert(monthly_running_costs);
       }}
     >
       {(props) => (
