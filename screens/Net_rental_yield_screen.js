@@ -10,32 +10,30 @@ import * as yup from "yup";
 import { Formik } from "formik";
 
 // define varibale for storing all the common validation errors
-const yup_common_validations = yup
-  .number("Please enter value again")
-  .typeError("Value must be a number");
+const yup_number = yup
+  .number("Value must be a number")
+  .typeError("Please enter value again");
 
 // define formik form validator
 const ReviewAdvanceForm = yup.object({
-  purchase_price: yup_common_validations.positive(
-    "Purchase price cannot be £0"
-  ),
-  monthly_rent: yup_common_validations,
-  solicitor_fees: yup_common_validations,
-  survey_fees: yup_common_validations,
-  refurb_costs: yup_common_validations,
-  stamp_duty: yup_common_validations,
-  other_costs: yup_common_validations,
-  monthly_mortgage: yup_common_validations,
-  letting_agent_percentage: yup_common_validations.required(
+  purchase_price: yup_number.positive("Purchase price cannot be £0"),
+  monthly_rent: yup_number,
+  solicitor_fees: yup_number,
+  survey_fees: yup_number,
+  refurb_costs: yup_number,
+  stamp_duty: yup_number,
+  other_costs: yup_number,
+  monthly_mortgage: yup_number,
+  letting_agent_percentage: yup_number.required(
     "Please enter letting agent percentage or enter 0"
   ),
-  insurance: yup_common_validations,
-  maintenance: yup_common_validations,
-  ground_rent: yup_common_validations,
-  service_charges: yup_common_validations,
-  void_period_percentage: yup_common_validations.required(
+  insurance: yup_number,
+  maintenance: yup_number,
+  ground_rent: yup_number,
+  service_charges: yup_number,
+  void_period_percentage: yup_number.required(
     "Please enter void percentage or enter 0"
-  )
+  ),
 });
 
 export default function Net_rental_yield_screen() {
@@ -56,15 +54,15 @@ export default function Net_rental_yield_screen() {
         ground_rent: 0,
         service_charges: 0,
         void_period_percentage: "",
-        final_result: 0
+        final_result: 0,
       }}
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
-        alert(values.letting_agent_percentage);
+        console.log(values);
       }}
     >
-      {props => (
+      {(props) => (
         <SafeAreaView style={globalstyles.container}>
           <ScrollView>
             <View style={globalstyles.main_row}>
@@ -90,7 +88,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -120,7 +118,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -152,7 +150,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -182,7 +180,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -212,7 +210,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -242,7 +240,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -272,7 +270,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -306,7 +304,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -333,7 +331,7 @@ export default function Net_rental_yield_screen() {
                   <TextInputMask
                     type={"custom"}
                     options={{
-                      mask: "999"
+                      mask: "999",
                     }}
                     style={globalstyles.input}
                     placeholder={"10%"}
@@ -365,7 +363,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -395,7 +393,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -425,7 +423,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -455,7 +453,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: ""
+                      suffixUnit: "",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -482,7 +480,7 @@ export default function Net_rental_yield_screen() {
                   <TextInputMask
                     type={"custom"}
                     options={{
-                      mask: "999"
+                      mask: "999",
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
