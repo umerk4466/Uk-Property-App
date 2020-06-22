@@ -8,6 +8,7 @@ import { globalstyles } from "../styles/global_styles";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
+import { Value } from "react-native-reanimated";
 
 // define varibale for storing all the common validation errors
 const yup_number = yup
@@ -34,7 +35,7 @@ const ReviewAdvanceForm = yup.object({
   service_charges: yup_number,
   void_period_percentage: yup_number.required(
     "Please enter void percentage or enter 0"
-  ),
+  )
 });
 
 export default function Net_rental_yield_screen() {
@@ -54,32 +55,48 @@ export default function Net_rental_yield_screen() {
         maintenance: 0,
         ground_rent: 0,
         service_charges: 0,
+        other_monthly_costs: 0,
         void_period_percentage: "",
-        final_result: 0,
+        final_result: 0
       }}
       validationSchema={ReviewAdvanceForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
         // calculations
-        get monthly running cost of letting agent and void period
+        // get monthly running cost of letting agent and void period
         let monthly_percentage_cost =
           (values.monthly_rent *
             (parseInt(values.letting_agent_percentage) +
               parseInt(values.void_period_percentage))) /
           100;
-          
+
         // total montly running cost
-        let monthly_running_costs =
+        let total_monthly_running_costs =
           values.monthly_mortgage +
           values.insurance +
           values.maintenance +
           values.ground_rent +
           values.service_charges +
+          values.other_monthly_costs +
           monthly_percentage_cost;
-        alert(monthly_running_costs);
+
+        // total puchase costs
+        let total_purchase_costs =
+          values.solicitor_fees +
+          values.survey_fees +
+          values.refurb_costs +
+          values.stamp_duty +
+          values.other_costs;
+
+        let final_net_yield =
+          (((values.monthly_rent - total_monthly_running_costs) * 12) /
+            (values.purchase_price + total_purchase_costs)) *
+          100;
+        // calculate and set final result value
+        actions.setFieldValue("final_result", final_net_yield.toFixed(2));
       }}
     >
-      {(props) => (
+      {props => (
         <SafeAreaView style={globalstyles.container}>
           <ScrollView>
             <View style={globalstyles.main_row}>
@@ -105,7 +122,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -135,7 +152,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -167,7 +184,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -197,7 +214,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -227,7 +244,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -257,7 +274,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -287,7 +304,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -321,7 +338,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -348,7 +365,7 @@ export default function Net_rental_yield_screen() {
                   <TextInputMask
                     type={"custom"}
                     options={{
-                      mask: "999",
+                      mask: "999"
                     }}
                     style={globalstyles.input}
                     placeholder={"10%"}
@@ -380,7 +397,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -410,7 +427,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -440,7 +457,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -470,7 +487,7 @@ export default function Net_rental_yield_screen() {
                       separator: ".",
                       delimiter: ",",
                       unit: "£",
-                      suffixUnit: "",
+                      suffixUnit: ""
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
@@ -492,12 +509,43 @@ export default function Net_rental_yield_screen() {
 
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
+                    Other monthly costs :{" "}
+                  </Text>
+                  <TextInputMask
+                    type={"money"}
+                    options={{
+                      precision: 0,
+                      separator: ".",
+                      delimiter: ",",
+                      unit: "£",
+                      suffixUnit: ""
+                    }}
+                    style={globalstyles.input}
+                    textAlign={"center"}
+                    keyboardType={"decimal-pad"}
+                    value={props.values.other_monthly_costs}
+                    onBlur={props.handleBlur("other_monthly_costs")}
+                    includeRawValueInChangeText={true}
+                    onChangeText={(maskedText, rawText) => {
+                      props.setFieldValue("other_monthly_costs", rawText);
+                    }}
+                  />
+                </View>
+                {props.errors.other_monthly_costs &&
+                props.touched.other_monthly_costs ? (
+                  <Text style={globalstyles.error_field}>
+                    {props.errors.other_monthly_costs}
+                  </Text>
+                ) : null}
+
+                <View style={globalstyles.single_line_input_view}>
+                  <Text style={globalstyles.signle_line_input_text}>
                     Void period (%) :{" "}
                   </Text>
                   <TextInputMask
                     type={"custom"}
                     options={{
-                      mask: "999",
+                      mask: "999"
                     }}
                     style={globalstyles.input}
                     textAlign={"center"}
