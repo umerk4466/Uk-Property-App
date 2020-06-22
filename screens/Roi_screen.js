@@ -24,7 +24,7 @@ const ReviewBasicForm = yup.object({
     .number("Must be a number")
     .required("Deposit must be at least of £0")
     .integer("Must be integer")
-    .typeError("Must enter a number again")
+    .typeError("Must enter a number again"),
   // final_result: yup.number()
 });
 
@@ -35,7 +35,7 @@ export default function Roi_screen() {
         monthly_rental: "",
         monthly_mortgage: "",
         initial_deposit: "",
-        final_result: 0
+        final_result: 0,
       }}
       validationSchema={ReviewBasicForm}
       enableReinitialize={true}
@@ -48,7 +48,7 @@ export default function Roi_screen() {
         actions.setFieldValue("final_result", annual_roi.toFixed(0));
       }}
     >
-      {props => (
+      {(props) => (
         <SafeAreaView style={globalstyles.container}>
           <ScrollView>
             <View style={globalstyles.main_row}>
@@ -72,7 +72,7 @@ export default function Roi_screen() {
                     separator: ".",
                     delimiter: ",",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: "",
                   }}
                   style={globalstyles.input}
                   textAlign={"center"}
@@ -100,7 +100,7 @@ export default function Roi_screen() {
                     separator: ".",
                     delimiter: ",",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: "",
                   }}
                   style={globalstyles.input}
                   textAlign={"center"}
@@ -128,7 +128,7 @@ export default function Roi_screen() {
                     separator: ".",
                     delimiter: ",",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: "",
                   }}
                   style={globalstyles.input}
                   textAlign={"center"}
