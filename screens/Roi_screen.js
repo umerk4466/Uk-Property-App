@@ -166,9 +166,9 @@ export default function Roi_screen() {
                 </Text>
               </View>
 
-              <View style={globalstyles.col}>
-                <CalculateButton />
-              </View>
+              {/* <View style={globalstyles.col}> */}
+              {/* <CalculateButton /> */}
+              {/* </View> */}
             </View>
           </ScrollView>
         </SafeAreaView>
