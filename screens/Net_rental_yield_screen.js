@@ -5,10 +5,11 @@ import { Button } from "react-native-elements";
 import { TextInputMask } from "react-native-masked-text";
 // import global styles
 import { globalstyles } from "../styles/global_styles";
+// import global components
+import { ResultBox } from "./global_components";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
-import { Value } from "react-native-reanimated";
 
 // define varibale for storing all the common validation errors
 const yup_number = yup
@@ -101,16 +102,14 @@ export default function Net_rental_yield_screen() {
           <ScrollView>
             <View style={globalstyles.main_row}>
               <View style={globalstyles.col}>
-                <View style={globalstyles.result_container}>
-                  <Text style={{ fontSize: 16 }}> Annual Net Yield </Text>
-                  <Text style={{ fontSize: 17 }}>
-                    {props.values.final_result}%
-                  </Text>
-                </View>
+                <ResultBox
+                  title="Annual Net Yield"
+                  result={props.values.final_result}
+                  sign="%"
+                />
               </View>
               <View style={globalstyles.col}>
                 <Text style={globalstyles.heading_text}>Property Details </Text>
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Investment (Deposit) :{" "}
@@ -124,7 +123,12 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.purchase_price &&
+                      props.touched.purchase_price
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.purchase_price}
@@ -136,11 +140,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.purchase_price && props.touched.purchase_price ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.purchase_price}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Monthly rent :{" "}
@@ -154,7 +157,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.monthly_rent && props.touched.monthly_rent
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.monthly_rent}
@@ -166,13 +173,11 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.monthly_rent && props.touched.monthly_rent ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.monthly_rent}
                   </Text>
                 ) : null}
-
                 <Text style={globalstyles.heading_text}>Purchase Costs </Text>
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Solicitor fees :{" "}
@@ -186,7 +191,12 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.solicitor_fees &&
+                      props.touched.solicitor_fees
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.solicitor_fees}
@@ -198,11 +208,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.solicitor_fees && props.touched.solicitor_fees ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.solicitor_fees}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Survey fees :{" "}
@@ -216,7 +225,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.survey_fees && props.touched.survey_fees
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.survey_fees}
@@ -228,11 +241,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.survey_fees && props.touched.survey_fees ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.survey_fees}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Refurb costs :{" "}
@@ -246,7 +258,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.refurb_costs && props.touched.refurb_costs
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.refurb_costs}
@@ -258,11 +274,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.refurb_costs && props.touched.refurb_costs ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.refurb_costs}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Stamp duty :{" "}
@@ -276,7 +291,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.stamp_duty && props.touched.stamp_duty
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.stamp_duty}
@@ -288,11 +307,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.stamp_duty && props.touched.stamp_duty ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.stamp_duty}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Other costs :{" "}
@@ -306,7 +324,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.other_costs && props.touched.other_costs
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.other_costs}
@@ -318,15 +340,13 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.other_costs && props.touched.other_costs ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.other_costs}
                   </Text>
                 ) : null}
-
                 <Text style={globalstyles.heading_text}>
                   Running costs (monthly)
                 </Text>
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Mortgage pcm :{" "}
@@ -340,7 +360,12 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.monthly_mortgage &&
+                      props.touched.monthly_mortgage
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.monthly_mortgage}
@@ -353,11 +378,10 @@ export default function Net_rental_yield_screen() {
                 </View>
                 {props.errors.monthly_mortgage &&
                 props.touched.monthly_mortgage ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.monthly_mortgage}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Letting agent (%) :{" "}
@@ -367,7 +391,12 @@ export default function Net_rental_yield_screen() {
                     options={{
                       mask: "999"
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.letting_agent_percentage &&
+                      props.touched.letting_agent_percentage
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     placeholder={"10%"}
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
@@ -381,11 +410,10 @@ export default function Net_rental_yield_screen() {
                 </View>
                 {props.errors.letting_agent_percentage &&
                 props.touched.letting_agent_percentage ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.letting_agent_percentage}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Insurance :{" "}
@@ -399,7 +427,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.insurance && props.touched.insurance
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.insurance}
@@ -411,11 +443,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.insurance && props.touched.insurance ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.insurance}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Maintenance :{" "}
@@ -429,7 +460,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.maintenance && props.touched.maintenance
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.maintenance}
@@ -441,11 +476,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.maintenance && props.touched.maintenance ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.maintenance}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Ground rent :{" "}
@@ -459,7 +493,11 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.ground_rent && props.touched.ground_rent
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.ground_rent}
@@ -471,11 +509,10 @@ export default function Net_rental_yield_screen() {
                   />
                 </View>
                 {props.errors.ground_rent && props.touched.ground_rent ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.ground_rent}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Service charges :{" "}
@@ -489,7 +526,12 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.service_charges &&
+                      props.touched.service_charges
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.service_charges}
@@ -502,11 +544,10 @@ export default function Net_rental_yield_screen() {
                 </View>
                 {props.errors.service_charges &&
                 props.touched.service_charges ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.service_charges}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Other monthly costs :{" "}
@@ -520,7 +561,12 @@ export default function Net_rental_yield_screen() {
                       unit: "£",
                       suffixUnit: ""
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.other_monthly_costs &&
+                      props.touched.other_monthly_costs
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     keyboardType={"decimal-pad"}
                     value={props.values.other_monthly_costs}
@@ -533,11 +579,10 @@ export default function Net_rental_yield_screen() {
                 </View>
                 {props.errors.other_monthly_costs &&
                 props.touched.other_monthly_costs ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.other_monthly_costs}
                   </Text>
                 ) : null}
-
                 <View style={globalstyles.single_line_input_view}>
                   <Text style={globalstyles.signle_line_input_text}>
                     Void period (%) :{" "}
@@ -547,7 +592,12 @@ export default function Net_rental_yield_screen() {
                     options={{
                       mask: "999"
                     }}
-                    style={globalstyles.input}
+                    style={
+                      props.errors.void_period_percentage &&
+                      props.touched.void_period_percentage
+                        ? globalstyles.input_error
+                        : globalstyles.input
+                    }
                     textAlign={"center"}
                     placeholder={"8%"}
                     keyboardType={"decimal-pad"}
@@ -561,7 +611,7 @@ export default function Net_rental_yield_screen() {
                 </View>
                 {props.errors.void_period_percentage &&
                 props.touched.void_period_percentage ? (
-                  <Text style={globalstyles.error_field}>
+                  <Text style={globalstyles.input_error_text}>
                     {props.errors.void_period_percentage}
                   </Text>
                 ) : null}
