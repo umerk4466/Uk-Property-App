@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 // styles used in all the pages
 export const globalstyles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff"
+    flex: 1
+    // backgroundColor: "#fff"
   },
   main_row: {
     margin: 10
@@ -60,3 +60,15 @@ export const globalstyles = StyleSheet.create({
     padding: 5
   }
 });
+
+export const CustomTheme = {
+  dark: false,
+  colors: {
+    primary: "#f28d45",
+    background: "#FFFFFF",
+    card: "#45aaf2",
+    text: "#FFFFFF"
+
+    // border: "#442C2E"
+  }
+};

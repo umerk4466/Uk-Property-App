@@ -5,10 +5,10 @@ import { Icon, Button } from "react-native-elements";
 import Home_screen from "./Home_screen";
 import Roi_screen from "./Roi_screen";
 import Net_rental_yield_screen from "./Net_rental_yield_screen";
-
 // import stack Navigator
 import { createStackNavigator } from "@react-navigation/stack";
 import Area_calc from "./Area_calc";
+import { color } from "react-native-reanimated";
 const Stack = createStackNavigator();
 
 export default function HomeStack({ navigation }) {
@@ -23,6 +23,7 @@ export default function HomeStack({ navigation }) {
               <Button
                 icon={
                   <Icon
+                    color={"white"}
                     size={30}
                     type="ionicon"
                     name={Platform.OS === "ios" ? "ios-menu" : "md-menu"}

@@ -6,7 +6,7 @@ import { TextInputMask } from "react-native-masked-text";
 // import global styles
 import { globalstyles } from "../styles/global_styles";
 // import global components
-import { ResultBox, CalculateButton } from "./global_components";
+import { ResultBox } from "./global_components";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
@@ -153,21 +153,13 @@ export default function Roi_screen() {
 
               <View style={globalstyles.col}>
                 <View style={globalstyles.buttons_container}>
-                  <Button
-                    buttonStyle={{ borderRadius: 10 }}
-                    title="Calculate ROI"
-                    onPress={props.handleSubmit}
-                  />
+                  <Button title="Calculate ROI" onPress={props.handleSubmit} />
                   <Button title="Reset" onPress={props.resetForm} />
                 </View>
                 <Text style={globalstyles.calculator_explanation_text}>
                   ROI (Return on Investment) measures the gain or loss generated
                   on an investment relative to the amount of money invested.
                 </Text>
-              </View>
-
-              <View style={globalstyles.col}>
-                <CalculateButton />
               </View>
             </View>
           </ScrollView>

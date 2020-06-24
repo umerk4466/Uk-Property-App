@@ -13,18 +13,6 @@ export function ResultBox(props) {
   );
 }
 
-export function CalculateButton(props) {
-  return (
-    <View style={styles.result_container}>
-      <Text style={{ fontSize: 16 }}> {props.title} </Text>
-      <Text style={{ fontSize: 17 }}>
-        {props.result}
-        {props.sign}
-      </Text>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   result_container: {
     backgroundColor: "white",

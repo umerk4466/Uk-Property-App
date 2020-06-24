@@ -100,13 +100,13 @@ export default function Home_screen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff"
+    alignItems: "center"
+    // backgroundColor: "#fff"
   },
   custom_button_container: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     width: "100%",
     height: 85
   },
