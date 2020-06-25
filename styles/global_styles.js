@@ -64,11 +64,15 @@ export const globalstyles = StyleSheet.create({
 export const CustomTheme = {
   dark: false,
   colors: {
-    primary: "#f28d45",
-    background: "#FFFFFF",
-    card: "#45aaf2",
-    text: "#FFFFFF"
-
+    primary: "#FFFFFF", // (On Primary color)
+    background: "#FFFFFF", // (Background color)
+    card: "#3498db", // (Primary color)
+    text: "#FFFFFF" // (On Primary color)
     // border: "#442C2E"
   }
 };
+
+// specify variable for statusbar color (Primary Variant color)
+export const StatusBarColor = "#2980b9";
+// specify variable for secondary color (for buttons etc)
+export const SecondaryColor = "#1abc9c";
