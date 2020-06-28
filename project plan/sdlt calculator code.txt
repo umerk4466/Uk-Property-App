@@ -5,8 +5,6 @@ https://www.moneysavingexpert.com/mortgages/stamp-duty/
 https://www.moneyadviceservice.org.uk/en/articles/everything-you-need-to-know-about-stamp-duty
 https://www.moneysavingexpert.com/mortgages/mortgage-rate-calculator/
 
-
-
 https://docs.google.com/spreadsheets/d/1X4Fdi6TmMfjutfyLmt2bDY5ezWbahYhsGq4dTsTC3Dw/edit#gid=377574362
 
 first owner = bool
