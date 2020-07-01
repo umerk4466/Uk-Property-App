@@ -6,28 +6,23 @@ import { TextInputMask } from "react-native-masked-text";
 // import global styles
 import { globalstyles } from "../styles/global_styles";
 // import global components
-import { ResultBox } from "./global_components";
+import ResultBox from "../components/result_box";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
 
+// define error field messages
+const yup_field_errors = yup
+  .number("Value must be a number")
+  .required("Field cannot be empty at least add £0")
+  .integer("Must be an integer")
+  .typeError("Enter value again");
+
+// yub fields validators
 const ReviewBasicForm = yup.object({
-  monthly_rental: yup
-    .number("Must be a number")
-    .required("Monthly rent must be at least of £0")
-    .integer("Must be integer")
-    .typeError("Must enter a number again"),
-  monthly_mortgage: yup
-    .number("Must be a number")
-    .required("Mortgage must be at least of £0")
-    .integer("Must be integer")
-    .typeError("Must enter a number again"),
-  initial_deposit: yup
-    .number("Must be a number")
-    .required("Deposit must be at least of £0")
-    .integer("Must be integer")
-    .typeError("Must enter a number again")
-  // final_result: yup.number()
+  monthly_rental: yup_field_errors,
+  monthly_mortgage: yup_field_errors,
+  initial_deposit: yup_field_errors,
 });
 
 export default function Roi_screen() {
@@ -37,7 +32,7 @@ export default function Roi_screen() {
         monthly_rental: "",
         monthly_mortgage: "",
         initial_deposit: "",
-        final_result: 0
+        final_result: 0,
       }}
       validationSchema={ReviewBasicForm}
       enableReinitialize={true}
@@ -50,27 +45,27 @@ export default function Roi_screen() {
         actions.setFieldValue("final_result", annual_roi.toFixed(0));
       }}
     >
-      {props => (
+      {(props) => (
         <SafeAreaView style={globalstyles.container}>
-          <ScrollView>
+          <ScrollView keyboardShouldPersistTaps="handled">
             <View style={globalstyles.main_row}>
-              <View style={globalstyles.col}>
-                <ResultBox
-                  title="Return on investment"
-                  result={props.values.final_result}
-                  sign="%"
-                />
-              </View>
-              <View style={globalstyles.col}>
+              <ResultBox
+                title="Return on investment"
+                result={props.values.final_result}
+                sign="% p.a"
+              />
+              <Text style={globalstyles.blue_text}>Property Details</Text>
+              <View style={globalstyles.back_container}>
                 <Text>Monthly rent of the property</Text>
                 <TextInputMask
+                  multiline={true}
                   type={"money"}
                   options={{
                     precision: 0,
                     separator: ".",
                     delimiter: ",",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: "",
                   }}
                   style={
                     props.errors.monthly_rental && props.touched.monthly_rental
@@ -96,13 +91,14 @@ export default function Roi_screen() {
 
                 <Text>Monthly Mortgage payments</Text>
                 <TextInputMask
+                  multiline={true}
                   type={"money"}
                   options={{
                     precision: 0,
                     separator: ".",
                     delimiter: ",",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: "",
                   }}
                   style={globalstyles.input}
                   textAlign={"center"}
@@ -124,13 +120,14 @@ export default function Roi_screen() {
 
                 <Text>Initial investment (deposit)</Text>
                 <TextInputMask
+                  multiline={true}
                   type={"money"}
                   options={{
                     precision: 0,
                     separator: ".",
                     delimiter: ",",
                     unit: "£",
-                    suffixUnit: ""
+                    suffixUnit: "",
                   }}
                   style={globalstyles.input}
                   textAlign={"center"}
@@ -151,16 +148,14 @@ export default function Roi_screen() {
                 ) : null}
               </View>
 
-              <View style={globalstyles.col}>
-                <View style={globalstyles.buttons_container}>
-                  <Button title="Calculate ROI" onPress={props.handleSubmit} />
-                  <Button title="Reset" onPress={props.resetForm} />
-                </View>
-                <Text style={globalstyles.calculator_explanation_text}>
-                  ROI (Return on Investment) measures the gain or loss generated
-                  on an investment relative to the amount of money invested.
-                </Text>
+              <View style={globalstyles.buttons_container}>
+                <Button title="Calculate ROI" onPress={props.handleSubmit} />
+                <Button title="Reset" onPress={props.resetForm} />
               </View>
+              <Text style={globalstyles.calculator_explanation_text}>
+                ROI (Return on Investment) measures the gain or loss generated
+                on an investment relative to the amount of money invested.
+              </Text>
             </View>
           </ScrollView>
         </SafeAreaView>
