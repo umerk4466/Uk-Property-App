@@ -50,7 +50,6 @@ export default function Roi_screen() {
       {(props) => (
         <SafeAreaView style={globalstyles.container}>
           <ScrollView contentContainerStyle={globalstyles.ScrollViewStyle}>
-            {/* <View style={globalstyles.main_row}> */}
             <ResultBox
               title="Return on investment"
               result={props.values.final_result}
@@ -69,11 +68,7 @@ export default function Roi_screen() {
                   unit: "£",
                   suffixUnit: "",
                 }}
-                style={
-                  props.errors.monthly_rental && props.touched.monthly_rental
-                    ? globalstyles.input_error
-                    : globalstyles.input
-                }
+                style={globalstyles.input}
                 textAlign={"center"}
                 placeholder={"£500"}
                 keyboardType={"decimal-pad"}
@@ -154,7 +149,6 @@ export default function Roi_screen() {
               calculateBtnTittle="Calculate ROI"
               onPressResetBtn={props.resetForm}
             ></CalculateAndResetButtons>
-            {/* </View> */}
           </ScrollView>
         </SafeAreaView>
       )}

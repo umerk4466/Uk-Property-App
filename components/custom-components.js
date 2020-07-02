@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   // ResultBox Component Style Start
   ResultsViewContainer: {
     backgroundColor: "#FFFFFF",
-    height: 120,
+    height: 110,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.3,
