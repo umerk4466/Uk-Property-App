@@ -9,10 +9,18 @@ import {
   ResultBox,
   CalculateAndResetButtons,
 } from "../components/custom-components";
+import { compose } from "recompose";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
 
+import {
+  handleTextInput,
+  withNextInputAutoFocusForm,
+  withNextInputAutoFocusInput,
+} from "react-native-formik";
+
+const Form = withNextInputAutoFocusForm(View);
 // define error field messages
 const yup_field_errors = yup
   .number("Value must be a number")
@@ -49,7 +57,10 @@ export default function Roi_screen() {
     >
       {(props) => (
         <SafeAreaView style={globalstyles.container}>
-          <ScrollView contentContainerStyle={globalstyles.ScrollViewStyle}>
+          <ScrollView
+            contentContainerStyle={globalstyles.ScrollViewStyle}
+            keyboardShouldPersistTaps={"handled"}
+          >
             <ResultBox
               title="Return on investment"
               result={props.values.final_result}
@@ -58,90 +69,95 @@ export default function Roi_screen() {
             <Text style={globalstyles.blue_text}>Property Details</Text>
             <View style={globalstyles.back_container}>
               <Text>Monthly rent of the property</Text>
-              <TextInputMask
-                multiline={true}
-                type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
-                style={globalstyles.input}
-                textAlign={"center"}
-                placeholder={"£500"}
-                keyboardType={"decimal-pad"}
-                value={props.values.monthly_rental}
-                onBlur={props.handleBlur("monthly_rental")}
-                includeRawValueInChangeText={true}
-                onChangeText={(maskedText, rawText) => {
-                  // props.handleChange("monthly_rental")
-                  props.setFieldValue("monthly_rental", rawText);
-                }}
-              />
-              {props.errors.monthly_rental && props.touched.monthly_rental ? (
-                <Text style={globalstyles.input_error_text}>
-                  {props.errors.monthly_rental}
-                </Text>
-              ) : null}
+              <Form>
+                <TextInputMask
+                  withNextInputAutoFocusInput
+                  multiline={true}
+                  returnKeyType="next"
+                  type={"money"}
+                  options={{
+                    precision: 0,
+                    separator: ".",
+                    delimiter: ",",
+                    unit: "£",
+                    suffixUnit: "",
+                  }}
+                  style={globalstyles.input}
+                  textAlign={"center"}
+                  placeholder={"£500"}
+                  keyboardType={"decimal-pad"}
+                  value={props.values.monthly_rental}
+                  onBlur={props.handleBlur("monthly_rental")}
+                  includeRawValueInChangeText={true}
+                  onChangeText={(maskedText, rawText) => {
+                    // props.handleChange("monthly_rental")
+                    props.setFieldValue("monthly_rental", rawText);
+                  }}
+                />
+                {props.errors.monthly_rental && props.touched.monthly_rental ? (
+                  <Text style={globalstyles.input_error_text}>
+                    {props.errors.monthly_rental}
+                  </Text>
+                ) : null}
 
-              <Text>Monthly Mortgage payments</Text>
-              <TextInputMask
-                multiline={true}
-                type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
-                style={globalstyles.input}
-                textAlign={"center"}
-                placeholder={"£200"}
-                keyboardType={"decimal-pad"}
-                value={props.values.monthly_mortgage}
-                onBlur={props.handleBlur("monthly_mortgage")}
-                includeRawValueInChangeText={true}
-                onChangeText={(maskedText, rawText) => {
-                  props.setFieldValue("monthly_mortgage", rawText);
-                }}
-              />
-              {props.errors.monthly_mortgage &&
-              props.touched.monthly_mortgage ? (
-                <Text style={globalstyles.input_error_text}>
-                  {props.errors.monthly_mortgage}
-                </Text>
-              ) : null}
+                <Text>Monthly Mortgage payments</Text>
+                <TextInputMask
+                  multiline={true}
+                  type={"money"}
+                  options={{
+                    precision: 0,
+                    separator: ".",
+                    delimiter: ",",
+                    unit: "£",
+                    suffixUnit: "",
+                  }}
+                  style={globalstyles.input}
+                  textAlign={"center"}
+                  placeholder={"£200"}
+                  keyboardType={"decimal-pad"}
+                  value={props.values.monthly_mortgage}
+                  onBlur={props.handleBlur("monthly_mortgage")}
+                  includeRawValueInChangeText={true}
+                  onChangeText={(maskedText, rawText) => {
+                    props.setFieldValue("monthly_mortgage", rawText);
+                  }}
+                />
+                {props.errors.monthly_mortgage &&
+                props.touched.monthly_mortgage ? (
+                  <Text style={globalstyles.input_error_text}>
+                    {props.errors.monthly_mortgage}
+                  </Text>
+                ) : null}
 
-              <Text>Initial investment (deposit)</Text>
-              <TextInputMask
-                multiline={true}
-                type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
-                style={globalstyles.input}
-                textAlign={"center"}
-                placeholder={"£10,000"}
-                keyboardType={"decimal-pad"}
-                value={props.values.initial_deposit}
-                onBlur={props.handleBlur("initial_deposit")}
-                includeRawValueInChangeText={true}
-                onChangeText={(maskedText, rawText) => {
-                  props.setFieldValue("initial_deposit", rawText);
-                }}
-              />
-              {props.errors.initial_deposit && props.touched.initial_deposit ? (
-                <Text style={globalstyles.input_error_text}>
-                  {props.errors.initial_deposit}
-                </Text>
-              ) : null}
+                <Text>Initial investment (deposit)</Text>
+                <TextInputMask
+                  multiline={true}
+                  type={"money"}
+                  options={{
+                    precision: 0,
+                    separator: ".",
+                    delimiter: ",",
+                    unit: "£",
+                    suffixUnit: "",
+                  }}
+                  style={globalstyles.input}
+                  textAlign={"center"}
+                  placeholder={"£10,000"}
+                  keyboardType={"decimal-pad"}
+                  value={props.values.initial_deposit}
+                  onBlur={props.handleBlur("initial_deposit")}
+                  includeRawValueInChangeText={true}
+                  onChangeText={(maskedText, rawText) => {
+                    props.setFieldValue("initial_deposit", rawText);
+                  }}
+                />
+                {props.errors.initial_deposit &&
+                props.touched.initial_deposit ? (
+                  <Text style={globalstyles.input_error_text}>
+                    {props.errors.initial_deposit}
+                  </Text>
+                ) : null}
+              </Form>
             </View>
 
             <CalculateAndResetButtons

@@ -62,7 +62,6 @@ export const globalstyles = StyleSheet.create({
     borderWidth: 0.3,
     borderColor: "#B6B6B6",
     borderRadius: 4,
-    marginBottom: 10,
   },
   blue_text: {
     color: "#2980B9",

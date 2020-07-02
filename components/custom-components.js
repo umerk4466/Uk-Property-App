@@ -44,7 +44,7 @@ export function ResultBox(props) {
 const styles = StyleSheet.create({
   // CalculateAndResetButtons Component Style Start
   ButtonsViewContainer: {
-    marginVertical: 10,
+    paddingVertical: 15,
   },
   ButtonStyle: {
     backgroundColor: "#2980B9",
