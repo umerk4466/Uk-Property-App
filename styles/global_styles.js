@@ -15,29 +15,6 @@ export const globalstyles = StyleSheet.create({
   col: {
     marginVertical: 5,
   },
-  input: {
-    marginTop: 5,
-    marginBottom: 3,
-    borderWidth: 0.6,
-    borderRadius: 2,
-    borderColor: "#B6B6B6",
-    fontSize: 16,
-    flex: 1,
-  },
-  input_error: {
-    marginTop: 5,
-    marginBottom: 3,
-    borderWidth: 0.6,
-    borderRadius: 2,
-    borderColor: "crimson",
-    fontSize: 16,
-    flex: 1,
-  },
-  input_error_text: {
-    color: "crimson",
-    fontSize: 12,
-    marginBottom: 5,
-  },
   calculator_explanation_text: {
     marginTop: 5,
     paddingTop: 2,

@@ -1,12 +1,11 @@
 import React from "react";
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
-// input field for money
-import { TextInputMask } from "react-native-masked-text";
 // import global styles
 import { globalstyles } from "../styles/global_styles";
 // import custom components
 import {
   ResultBox,
+  CustomTextInputMask,
   CalculateAndResetButtons,
 } from "../components/custom-components";
 // import form and form validator(formik, yup) library
@@ -27,44 +26,6 @@ const ReviewBasicForm = yup.object({
   initial_deposit: yup_field_errors,
 });
 
-const MyTextInputMask = ({
-  title = "Not Specified",
-  placeholder,
-  onBlur,
-  value,
-  onChangeText,
-  error,
-  touched,
-}) => {
-  return (
-    <View>
-      <Text>{title}</Text>
-      <TextInputMask
-        multiline={true}
-        type={"money"}
-        options={{
-          precision: 0,
-          separator: ".",
-          delimiter: ",",
-          unit: "£",
-          suffixUnit: "",
-        }}
-        style={globalstyles.input}
-        textAlign={"center"}
-        placeholder={placeholder}
-        keyboardType={"decimal-pad"}
-        value={value}
-        onBlur={onBlur}
-        includeRawValueInChangeText={true}
-        onChangeText={onChangeText}
-      />
-      {error && touched ? (
-        <Text style={globalstyles.input_error_text}>{error}</Text>
-      ) : null}
-    </View>
-  );
-};
-
 export default function Roi_screen() {
   return (
     <Formik
@@ -77,7 +38,7 @@ export default function Roi_screen() {
       validationSchema={ReviewBasicForm}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
-        // get all the filed data and add Basic return on investment formula
+        // get all the filed data and calculate return on investment
         const annual_cash_flow =
           values.monthly_rental * 12 - values.monthly_mortgage * 12;
         const annual_roi = (annual_cash_flow / values.initial_deposit) * 100;
@@ -91,16 +52,19 @@ export default function Roi_screen() {
             contentContainerStyle={globalstyles.ScrollViewStyle}
             keyboardShouldPersistTaps={"handled"}
           >
+            {/* ROI result box */}
             <ResultBox
               title="Return on investment"
               result={props.values.final_result}
               sign="% p.a"
             />
+            {/* Property details container */}
             <Text style={globalstyles.blue_text}>Property Details</Text>
             <View style={globalstyles.back_container}>
-              <MyTextInputMask
-                title={"sj"}
-                placeholder={"hah"}
+              {/* Monthly rent field */}
+              <CustomTextInputMask
+                title={"Monthly rent of the property"}
+                placeholder={"£500"}
                 onBlur={props.handleBlur("monthly_rental")}
                 value={props.values.monthly_rental}
                 fieldName={"monthly_rental"}
@@ -110,93 +74,34 @@ export default function Roi_screen() {
                 error={props.errors.monthly_rental}
                 touched={props.touched.monthly_rental}
               />
-              <Text>Monthly rent of the property</Text>
-              <TextInputMask
-                multiline={true}
-                type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
-                style={globalstyles.input}
-                textAlign={"center"}
-                placeholder={"£500"}
-                keyboardType={"decimal-pad"}
-                value={props.values.monthly_rental}
-                onBlur={props.handleBlur("monthly_rental")}
-                includeRawValueInChangeText={true}
-                onChangeText={(maskedText, rawText) => {
-                  // props.handleChange("monthly_rental")
-                  props.setFieldValue("monthly_rental", rawText);
-                }}
-              />
-              {props.errors.monthly_rental && props.touched.monthly_rental ? (
-                <Text style={globalstyles.input_error_text}>
-                  {props.errors.monthly_rental}
-                </Text>
-              ) : null}
-
-              <Text>Monthly Mortgage payments</Text>
-              <TextInputMask
-                multiline={true}
-                type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
-                style={globalstyles.input}
-                textAlign={"center"}
+              {/* Monthy mortgage field */}
+              <CustomTextInputMask
+                title={"Monthly Mortgage payments"}
                 placeholder={"£200"}
-                keyboardType={"decimal-pad"}
-                value={props.values.monthly_mortgage}
                 onBlur={props.handleBlur("monthly_mortgage")}
-                includeRawValueInChangeText={true}
+                value={props.values.monthly_mortgage}
+                fieldName={"monthly_mortgage"}
                 onChangeText={(maskedText, rawText) => {
                   props.setFieldValue("monthly_mortgage", rawText);
                 }}
+                error={props.errors.monthly_mortgage}
+                touched={props.touched.monthly_mortgage}
               />
-              {props.errors.monthly_mortgage &&
-              props.touched.monthly_mortgage ? (
-                <Text style={globalstyles.input_error_text}>
-                  {props.errors.monthly_mortgage}
-                </Text>
-              ) : null}
-
-              <Text>Initial investment (deposit)</Text>
-              <TextInputMask
-                multiline={true}
-                type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
-                style={globalstyles.input}
-                textAlign={"center"}
+              {/* Initial investment field */}
+              <CustomTextInputMask
+                title={"Initial investment (deposit)"}
                 placeholder={"£10,000"}
-                keyboardType={"decimal-pad"}
-                value={props.values.initial_deposit}
                 onBlur={props.handleBlur("initial_deposit")}
-                includeRawValueInChangeText={true}
+                value={props.values.initial_deposit}
+                fieldName={"initial_deposit"}
                 onChangeText={(maskedText, rawText) => {
                   props.setFieldValue("initial_deposit", rawText);
                 }}
+                error={props.errors.initial_deposit}
+                touched={props.touched.initial_deposit}
               />
-              {props.errors.initial_deposit && props.touched.initial_deposit ? (
-                <Text style={globalstyles.input_error_text}>
-                  {props.errors.initial_deposit}
-                </Text>
-              ) : null}
             </View>
-
+            {/* Calculate and reset button */}
             <CalculateAndResetButtons
               onPressCalculateBtn={props.handleSubmit}
               calculateBtnTittle="Calculate ROI"

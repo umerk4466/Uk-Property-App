@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+// import input-field for money
+import { TextInputMask } from "react-native-masked-text";
 
 // CalculateAndResetButtons Component Style Start
-export function CalculateAndResetButtons(props) {
+export const CalculateAndResetButtons = (props) => {
   return (
     <View style={styles.ButtonsViewContainer}>
       {/* Calculate Button */}
@@ -25,10 +27,10 @@ export function CalculateAndResetButtons(props) {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 // ResultBox Component
-export function ResultBox(props) {
+export const ResultBox = (props) => {
   return (
     <View style={styles.ResultsViewContainer}>
       <Text style={{ fontSize: 16 }}> {props.title} </Text>
@@ -38,8 +40,46 @@ export function ResultBox(props) {
       </Text>
     </View>
   );
-}
+};
 
+// CustomTextInputMask component for money input
+export const CustomTextInputMask = ({
+  title,
+  placeholder,
+  onBlur,
+  value,
+  onChangeText,
+  error,
+  touched,
+}) => {
+  return (
+    <View>
+      <Text>{title}</Text>
+      <TextInputMask
+        multiline={true}
+        type={"money"}
+        options={{
+          precision: 0,
+          separator: ".",
+          delimiter: ",",
+          unit: "£",
+          suffixUnit: "",
+        }}
+        style={styles.Input}
+        textAlign={"center"}
+        placeholder={placeholder}
+        keyboardType={"decimal-pad"}
+        value={value}
+        onBlur={onBlur}
+        includeRawValueInChangeText={true}
+        onChangeText={onChangeText}
+      />
+      {error && touched ? (
+        <Text style={styles.InputTextError}>{error}</Text>
+      ) : null}
+    </View>
+  );
+};
 // Styles
 const styles = StyleSheet.create({
   // CalculateAndResetButtons Component Style Start
@@ -72,5 +112,20 @@ const styles = StyleSheet.create({
     borderWidth: 0.3,
     borderColor: "#B6B6B6",
     borderRadius: 4,
+  },
+  // TextInputMask Component Style Start
+  Input: {
+    marginTop: 5,
+    marginBottom: 3,
+    borderWidth: 0.6,
+    borderRadius: 2,
+    borderColor: "#B6B6B6",
+    fontSize: 16,
+    flex: 1,
+  },
+  InputTextError: {
+    color: "crimson",
+    fontSize: 12,
+    marginBottom: 5,
   },
 });
