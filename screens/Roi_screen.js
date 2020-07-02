@@ -27,6 +27,44 @@ const ReviewBasicForm = yup.object({
   initial_deposit: yup_field_errors,
 });
 
+const MyTextInputMask = ({
+  title = "Not Specified",
+  placeholder,
+  onBlur,
+  value,
+  onChangeText,
+  error,
+  touched,
+}) => {
+  return (
+    <View>
+      <Text>{title}</Text>
+      <TextInputMask
+        multiline={true}
+        type={"money"}
+        options={{
+          precision: 0,
+          separator: ".",
+          delimiter: ",",
+          unit: "£",
+          suffixUnit: "",
+        }}
+        style={globalstyles.input}
+        textAlign={"center"}
+        placeholder={placeholder}
+        keyboardType={"decimal-pad"}
+        value={value}
+        onBlur={onBlur}
+        includeRawValueInChangeText={true}
+        onChangeText={onChangeText}
+      />
+      {error && touched ? (
+        <Text style={globalstyles.input_error_text}>{error}</Text>
+      ) : null}
+    </View>
+  );
+};
+
 export default function Roi_screen() {
   return (
     <Formik
@@ -60,6 +98,18 @@ export default function Roi_screen() {
             />
             <Text style={globalstyles.blue_text}>Property Details</Text>
             <View style={globalstyles.back_container}>
+              <MyTextInputMask
+                title={"sj"}
+                placeholder={"hah"}
+                onBlur={props.handleBlur("monthly_rental")}
+                value={props.values.monthly_rental}
+                fieldName={"monthly_rental"}
+                onChangeText={(maskedText, rawText) => {
+                  props.setFieldValue("monthly_rental", rawText);
+                }}
+                error={props.errors.monthly_rental}
+                touched={props.touched.monthly_rental}
+              />
               <Text>Monthly rent of the property</Text>
               <TextInputMask
                 multiline={true}
