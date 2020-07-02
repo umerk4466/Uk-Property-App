@@ -35,13 +35,6 @@ export const globalstyles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5,
   },
-  buttons_container: {
-    height: 110,
-    justifyContent: "space-evenly",
-    // borderBottomWidth: 0.5,
-    // borderTopWidth: 0.5,
-    // paddingTop: 5,
-  },
   calculator_explanation_text: {
     marginTop: 5,
     paddingTop: 2,
@@ -66,6 +59,7 @@ export const globalstyles = StyleSheet.create({
     borderWidth: 0.3,
     borderColor: "#B6B6B6",
     borderRadius: 4,
+    marginBottom: 10,
   },
   blue_text: {
     color: "#2980B9",

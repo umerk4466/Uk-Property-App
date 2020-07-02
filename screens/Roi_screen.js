@@ -1,12 +1,14 @@
 import React from "react";
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
-import { Button } from "react-native-elements";
 // input field for money
 import { TextInputMask } from "react-native-masked-text";
 // import global styles
 import { globalstyles } from "../styles/global_styles";
-// import global components
-import ResultBox from "../components/result_box";
+// import custom components
+import {
+  ResultBox,
+  CalculateAndResetButtons,
+} from "../components/custom-components";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
@@ -47,7 +49,7 @@ export default function Roi_screen() {
     >
       {(props) => (
         <SafeAreaView style={globalstyles.container}>
-          <ScrollView keyboardShouldPersistTaps="handled">
+          <ScrollView>
             <View style={globalstyles.main_row}>
               <ResultBox
                 title="Return on investment"
@@ -148,14 +150,11 @@ export default function Roi_screen() {
                 ) : null}
               </View>
 
-              <View style={globalstyles.buttons_container}>
-                <Button title="Calculate ROI" onPress={props.handleSubmit} />
-                <Button title="Reset" onPress={props.resetForm} />
-              </View>
-              <Text style={globalstyles.calculator_explanation_text}>
-                ROI (Return on Investment) measures the gain or loss generated
-                on an investment relative to the amount of money invested.
-              </Text>
+              <CalculateAndResetButtons
+                onPressCalculateBtn={props.handleSubmit}
+                calculateBtnTittle="Calculate ROI"
+                onPressResetBtn={props.resetForm}
+              ></CalculateAndResetButtons>
             </View>
           </ScrollView>
         </SafeAreaView>
