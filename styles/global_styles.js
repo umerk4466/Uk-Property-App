@@ -7,7 +7,11 @@ export const globalstyles = StyleSheet.create({
     // backgroundColor: "#fff"
   },
   main_row: {
-    margin: 10,
+    // margin: 10,
+    padding: 10,
+  },
+  ScrollViewStyle: {
+    padding: 10,
   },
   col: {
     marginVertical: 5,
