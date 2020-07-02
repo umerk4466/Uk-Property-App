@@ -9,11 +9,11 @@ import {
   ResultBox,
   CalculateAndResetButtons,
 } from "../components/custom-components";
+import { compose } from "recompose";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
 
-const con = { multiline: true };
 // define error field messages
 const yup_field_errors = yup
   .number("Value must be a number")
@@ -65,13 +65,13 @@ export default function Roi_screen() {
               <TextInputMask
                 multiline={true}
                 type={"money"}
-                options={{
-                  precision: 0,
-                  separator: ".",
-                  delimiter: ",",
-                  unit: "£",
-                  suffixUnit: "",
-                }}
+                // options={{
+                //   precision: 0,
+                //   separator: ".",
+                //   delimiter: ",",
+                //   unit: "£",
+                //   suffixUnit: "",
+                // }}
                 style={globalstyles.input}
                 textAlign={"center"}
                 placeholder={"£500"}
@@ -92,7 +92,7 @@ export default function Roi_screen() {
 
               <Text>Monthly Mortgage payments</Text>
               <TextInputMask
-                con
+                multiline={true}
                 type={"money"}
                 options={{
                   precision: 0,
