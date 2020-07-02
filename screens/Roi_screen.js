@@ -65,13 +65,13 @@ export default function Roi_screen() {
               <TextInputMask
                 multiline={true}
                 type={"money"}
-                // options={{
-                //   precision: 0,
-                //   separator: ".",
-                //   delimiter: ",",
-                //   unit: "£",
-                //   suffixUnit: "",
-                // }}
+                options={{
+                  precision: 0,
+                  separator: ".",
+                  delimiter: ",",
+                  unit: "£",
+                  suffixUnit: "",
+                }}
                 style={globalstyles.input}
                 textAlign={"center"}
                 placeholder={"£500"}
