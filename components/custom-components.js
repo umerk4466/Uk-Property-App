@@ -44,7 +44,7 @@ export function ResultBox(props) {
 const styles = StyleSheet.create({
   // CalculateAndResetButtons Component Style Start
   ButtonsViewContainer: {
-    backgroundColor: "red",
+    marginVertical: 10,
   },
   ButtonStyle: {
     backgroundColor: "#2980B9",
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   TextStyle: {
     textAlign: "center",
     color: "rgba(0, 0, 0, 0.23)",
+    padding: 2,
   },
   // ResultBox Component Style Start
   ResultsViewContainer: {
