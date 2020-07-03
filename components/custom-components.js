@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 // import input-field for money
 import { TextInputMask } from "react-native-masked-text";
+import { bool } from "yup";
 
 // CalculateAndResetButtons Component Style Start
 export const CalculateAndResetButtons = (props) => {
@@ -57,6 +58,8 @@ export const CustomTextInputMask = ({
       <Text>{title}</Text>
       <TextInputMask
         multiline={true}
+        numberOfLine={1}
+        blurOnSubmit={true}
         type={"money"}
         options={{
           precision: 0,

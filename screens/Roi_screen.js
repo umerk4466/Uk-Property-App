@@ -51,6 +51,7 @@ export default function Roi_screen() {
           <ScrollView
             contentContainerStyle={globalstyles.ScrollViewStyle}
             keyboardShouldPersistTaps={"handled"}
+            showsHorizontalScrollIndicator={false}
           >
             {/* ROI result box */}
             <ResultBox
@@ -67,7 +68,6 @@ export default function Roi_screen() {
                 placeholder={"£500"}
                 onBlur={props.handleBlur("monthly_rental")}
                 value={props.values.monthly_rental}
-                fieldName={"monthly_rental"}
                 onChangeText={(maskedText, rawText) => {
                   props.setFieldValue("monthly_rental", rawText);
                 }}
@@ -80,7 +80,6 @@ export default function Roi_screen() {
                 placeholder={"£200"}
                 onBlur={props.handleBlur("monthly_mortgage")}
                 value={props.values.monthly_mortgage}
-                fieldName={"monthly_mortgage"}
                 onChangeText={(maskedText, rawText) => {
                   props.setFieldValue("monthly_mortgage", rawText);
                 }}
@@ -93,7 +92,6 @@ export default function Roi_screen() {
                 placeholder={"£10,000"}
                 onBlur={props.handleBlur("initial_deposit")}
                 value={props.values.initial_deposit}
-                fieldName={"initial_deposit"}
                 onChangeText={(maskedText, rawText) => {
                   props.setFieldValue("initial_deposit", rawText);
                 }}
