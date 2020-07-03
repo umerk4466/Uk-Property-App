@@ -12,7 +12,9 @@ export const CalculateAndResetButtons = (props) => {
         style={styles.ButtonStyle}
         onPress={props.onPressCalculateBtn}
       >
-        <Text style={styles.BtnTextStyle}>{props.calculateBtnTittle}</Text>
+        <Text style={[styles.BtnTextStyle, styles.LargeFont]}>
+          {props.calculateBtnTittle}
+        </Text>
       </TouchableOpacity>
 
       {/* middel text "or" */}
@@ -23,7 +25,7 @@ export const CalculateAndResetButtons = (props) => {
         style={styles.ButtonStyle}
         onPress={props.onPressResetBtn}
       >
-        <Text style={styles.BtnTextStyle}>Reset</Text>
+        <Text style={[styles.BtnTextStyle, styles.LargeFont]}>Reset</Text>
       </TouchableOpacity>
     </View>
   );
@@ -33,8 +35,8 @@ export const CalculateAndResetButtons = (props) => {
 export const ResultBox = (props) => {
   return (
     <View style={styles.ResultsViewContainer}>
-      <Text> {props.title} </Text>
-      <Text>
+      <Text style={styles.LargeFont}> {props.title} </Text>
+      <Text style={styles.LargeFont}>
         {props.result}
         {props.sign}
       </Text>
@@ -67,7 +69,7 @@ export const CustomTextInputMask = ({
           unit: "£",
           suffixUnit: "",
         }}
-        style={styles.Input}
+        style={[styles.Input, styles.LargeFont]}
         textAlign={"center"}
         placeholder={placeholder}
         keyboardType={"decimal-pad"}
@@ -88,7 +90,7 @@ export const HeadingText = (props) => {
     <Text
       adjustsFontSizeToFit={true}
       numberOfLines={1}
-      style={styles.HeadingText}
+      style={[styles.HeadingTextStyle, styles.LargeFont]}
     >
       {props.heading}
     </Text>
@@ -110,7 +112,6 @@ const styles = StyleSheet.create({
   },
   BtnTextStyle: {
     color: "white",
-    // fontSize: 16,
   },
   TextStyle: {
     textAlign: "center",
@@ -135,7 +136,6 @@ const styles = StyleSheet.create({
     borderWidth: 0.6,
     borderRadius: 2,
     borderColor: "#B6B6B6",
-    // fontSize: 16,
     flex: 1,
   },
   InputTextError: {
@@ -144,5 +144,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   // HeadingText component style start
-  HeadingText: { color: "#2980B9", paddingVertical: 10, fontSize: 15 },
+  HeadingTextStyle: {
+    color: "#2980B9",
+    paddingVertical: 10,
+  },
+  //static Font Size LargeFont to use in Text
+  LargeFont: { fontSize: 16 },
 });
