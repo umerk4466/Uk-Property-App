@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 // import input-field for money
 import { TextInputMask } from "react-native-masked-text";
+// import Yup library for error messages
+import * as yup from "yup";
 
 // CalculateAndResetButtons Component Style Start
 export const CalculateAndResetButtons = (props) => {
@@ -96,6 +98,13 @@ export const HeadingText = (props) => {
     </Text>
   );
 };
+// Yup Common Error Messages
+export const CommonErrorMessages = yup
+  .number("Value must be a number")
+  .required("Field cannot be empty at least add £0")
+  .integer("Must be an integer")
+  .typeError("Please enter value again");
+
 // Styles
 const styles = StyleSheet.create({
   // CalculateAndResetButtons Component Style Start

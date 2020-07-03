@@ -7,24 +7,18 @@ import {
   ResultBox,
   CustomTextInputMask,
   HeadingText,
+  CommonErrorMessages,
   CalculateAndResetButtons,
 } from "../components/custom-components";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
 
-// define error field messages
-const yup_field_errors = yup
-  .number("Value must be a number")
-  .required("Field cannot be empty at least add £0")
-  .integer("Must be an integer")
-  .typeError("Please enter value again");
-
-// yub fields validators
+// yub Input Fields Validator schema variable
 const ReviewBasicForm = yup.object({
-  monthly_rental: yup_field_errors,
-  monthly_mortgage: yup_field_errors,
-  initial_deposit: yup_field_errors,
+  monthly_rental: CommonErrorMessages,
+  monthly_mortgage: CommonErrorMessages,
+  initial_deposit: CommonErrorMessages,
 });
 
 export default function Roi_screen() {
