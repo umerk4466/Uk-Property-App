@@ -85,7 +85,11 @@ export const CustomTextInputMask = ({
 // HeadingText Component
 export const HeadingText = (props) => {
   return (
-    <Text numberOfLines={1} style={styles.HeadingText}>
+    <Text
+      adjustsFontSizeToFit={true}
+      numberOfLines={1}
+      style={styles.HeadingText}
+    >
       {props.heading}
     </Text>
   );
@@ -129,11 +133,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 3,
     borderWidth: 0.6,
-    height: 50,
     borderRadius: 2,
     borderColor: "#B6B6B6",
     // fontSize: 16,
-    color: "red",
     flex: 1,
   },
   InputTextError: {
@@ -142,5 +144,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   // HeadingText component style start
-  HeadingText: { color: "#2980B9", paddingVertical: 10, fontSize: 16 },
+  HeadingText: { color: "#2980B9", paddingVertical: 10, fontSize: 15 },
 });
