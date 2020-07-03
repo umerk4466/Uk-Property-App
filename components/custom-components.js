@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 // import input-field for money
 import { TextInputMask } from "react-native-masked-text";
-import { bool } from "yup";
 
 // CalculateAndResetButtons Component Style Start
 export const CalculateAndResetButtons = (props) => {
@@ -34,8 +33,8 @@ export const CalculateAndResetButtons = (props) => {
 export const ResultBox = (props) => {
   return (
     <View style={styles.ResultsViewContainer}>
-      <Text style={{ fontSize: 16 }}> {props.title} </Text>
-      <Text style={{ fontSize: 17 }}>
+      <Text> {props.title} </Text>
+      <Text>
         {props.result}
         {props.sign}
       </Text>
@@ -55,7 +54,7 @@ export const CustomTextInputMask = ({
 }) => {
   return (
     <View>
-      <Text>{title}</Text>
+      <Text numberOfLines={1}>{title}</Text>
       <TextInputMask
         multiline={true}
         numberOfLine={1}
@@ -83,6 +82,14 @@ export const CustomTextInputMask = ({
     </View>
   );
 };
+// HeadingText Component
+export const HeadingText = (props) => {
+  return (
+    <Text numberOfLines={1} style={styles.HeadingText}>
+      {props.heading}
+    </Text>
+  );
+};
 // Styles
 const styles = StyleSheet.create({
   // CalculateAndResetButtons Component Style Start
@@ -91,7 +98,7 @@ const styles = StyleSheet.create({
   },
   ButtonStyle: {
     backgroundColor: "#2980B9",
-    height: 40,
+    height: 42,
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
   },
   BtnTextStyle: {
     color: "white",
-    fontSize: 16,
+    // fontSize: 16,
   },
   TextStyle: {
     textAlign: "center",
@@ -109,7 +116,8 @@ const styles = StyleSheet.create({
   // ResultBox Component Style Start
   ResultsViewContainer: {
     backgroundColor: "#FFFFFF",
-    height: 110,
+    minHeight: 110,
+    padding: 5,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.3,
@@ -121,9 +129,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 3,
     borderWidth: 0.6,
+    height: 50,
     borderRadius: 2,
     borderColor: "#B6B6B6",
-    fontSize: 16,
+    // fontSize: 16,
+    color: "red",
     flex: 1,
   },
   InputTextError: {
@@ -131,4 +141,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5,
   },
+  // HeadingText component style start
+  HeadingText: { color: "#2980B9", paddingVertical: 10, fontSize: 16 },
 });

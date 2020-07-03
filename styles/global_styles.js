@@ -2,15 +2,22 @@ import { StyleSheet } from "react-native";
 
 // styles used in all the pages
 export const globalstyles = StyleSheet.create({
-  container: {
+  SafeAreaViewContainer: {
     flex: 1,
     // backgroundColor: "#fff"
   },
+  ScrollViewContainer: {
+    padding: 10,
+  },
+  WhiteContainer: {
+    padding: 10,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 0.3,
+    borderColor: "#B6B6B6",
+    borderRadius: 4,
+  },
   main_row: {
     margin: 10,
-  },
-  ScrollViewStyle: {
-    padding: 10,
   },
   col: {
     marginVertical: 5,
@@ -32,18 +39,6 @@ export const globalstyles = StyleSheet.create({
     backgroundColor: "whitesmoke",
     marginVertical: 2,
     padding: 5,
-  },
-  back_container: {
-    padding: 10,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 0.3,
-    borderColor: "#B6B6B6",
-    borderRadius: 4,
-  },
-  blue_text: {
-    color: "#2980B9",
-    paddingVertical: 10,
-    fontSize: 16,
   },
 });
 
