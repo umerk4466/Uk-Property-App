@@ -10,7 +10,7 @@ import {
   CommonErrorMessages,
   CalculateAndResetButtons,
 } from "../components/custom-components";
-// import Funtion scrollToTop
+// import custom funtion scrollToTop
 import { scrollToTop } from "../components/custom-functions";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
