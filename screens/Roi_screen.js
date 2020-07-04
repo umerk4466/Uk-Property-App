@@ -10,6 +10,8 @@ import {
   CommonErrorMessages,
   CalculateAndResetButtons,
 } from "../components/custom-components";
+// import Funtion scrollToTop
+import { scrollToTop } from "../components/custom-functions";
 // import form and form validator(formik, yup) library
 import * as yup from "yup";
 import { Formik } from "formik";
@@ -22,6 +24,8 @@ const ReviewBasicForm = yup.object({
 });
 
 export default function Roi_screen() {
+  // define ref variable, for automatic scrolling
+  const scrollRef = React.useRef();
   return (
     <Formik
       initialValues={{
@@ -39,11 +43,14 @@ export default function Roi_screen() {
         const annual_roi = (annual_cash_flow / values.initial_deposit) * 100;
         // update the "final_result field"
         actions.setFieldValue("final_result", annual_roi.toFixed(0));
+        // scroll to top
+        scrollToTop(scrollRef);
       }}
     >
       {(props) => (
         <SafeAreaView style={globalstyles.SafeAreaViewContainer}>
           <ScrollView
+            ref={scrollRef}
             contentContainerStyle={globalstyles.ScrollViewContainer}
             keyboardShouldPersistTaps={"handled"}
             showsHorizontalScrollIndicator={false}
