@@ -53,7 +53,6 @@ export default function Roi_screen() {
             ref={scrollRef}
             contentContainerStyle={globalstyles.ScrollViewContainer}
             keyboardShouldPersistTaps={"handled"}
-            showsHorizontalScrollIndicator={false}
           >
             {/* ROI result box */}
             <ResultBox

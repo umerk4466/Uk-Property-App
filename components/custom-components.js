@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   // ResultBox Component Style Start
   ResultsViewContainer: {
     backgroundColor: "#FFFFFF",
-    minHeight: 410,
+    minHeight: 110,
     padding: 5,
     justifyContent: "center",
     alignItems: "center",
