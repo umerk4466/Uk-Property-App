@@ -5,8 +5,6 @@ import { TextInputMask } from "react-native-masked-text";
 // import Yup library for error messages
 import * as yup from "yup";
 
-import AnimateNumber from "react-native-countup";
-
 // CalculateAndResetButtons Component Style Start
 export const CalculateAndResetButtons = (props) => {
   return (
@@ -44,7 +42,6 @@ export const ResultBox = (props) => {
         {props.result}
         {props.sign}
       </Text>
-      <AnimateNumber value={props.result} />
     </View>
   );
 };
