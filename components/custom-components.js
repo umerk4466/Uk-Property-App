@@ -44,13 +44,7 @@ export const ResultBox = (props) => {
         {props.result}
         {props.sign}
       </Text>
-
-      <AnimateNumber
-        value={100}
-        formatter={(val) => {
-          return parseFloat(val).toFixed(0);
-        }}
-      />
+      <AnimateNumber value={props.result} />
     </View>
   );
 };
