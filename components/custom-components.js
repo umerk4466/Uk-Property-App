@@ -5,6 +5,19 @@ import { TextInputMask } from "react-native-masked-text";
 // import Yup library for error messages
 import * as yup from "yup";
 
+import {
+  TextAnimationFadeIn,
+  TextAnimationZoom,
+  TextAnimationRain,
+  TextAnimationSlideDown,
+  TextAnimationSlideUp,
+  TextAnimationSlideLeft,
+  TextAnimationSlideRight,
+  TextAnimationShake,
+  TextAnimationReverse,
+  TextAnimationDeZoom,
+} from "react-native-text-effects";
+
 // CalculateAndResetButtons Component Style Start
 export const CalculateAndResetButtons = (props) => {
   return (
@@ -42,6 +55,12 @@ export const ResultBox = (props) => {
         {props.result}
         {props.sign}
       </Text>
+      <TextAnimationSlideDown
+        value={"Text With SlideDown!"}
+        delay={100}
+        duration={1000}
+        style={{ color: "purple" }}
+      />
     </View>
   );
 };
