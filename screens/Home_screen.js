@@ -1,166 +1,41 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-
-import { CustomBoxButton } from "../components/custom-components";
+import { SafeAreaView, ScrollView } from "react-native";
+import { globalstyles } from "../styles/global_styles";
+import { CustomTouchableButton } from "../components/custom-components";
 
 export default function Home_screen({ navigation }) {
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <SafeAreaView style={globalstyles.SafeAreaViewContainer}>
+      <ScrollView>
         {/* ROI CALCULATOR */}
-        <TouchableOpacity
-          style={styles.custom_button_container}
-          onPress={() => {
-            navigation.navigate("ROI Calculator");
-          }}
-        >
-          <View style={styles.image_box}>
-            <Image
-              source={require("../images/roi.png")}
-              style={styles.ImageIconStyle}
-            />
-          </View>
-          <View style={styles.text_box}>
-            <Text>ROI Calculator</Text>
-            <Text style={{ fontSize: 11 }}>Return on investment </Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.bottom_line}></View>
-
+        <CustomTouchableButton
+          onPress={() => navigation.navigate("ROI Calculator")}
+          imgSource={require("../images/roi.png")}
+          title="ROI Calculator"
+          description="Return on investment"
+        ></CustomTouchableButton>
         {/* Net Rental Yield Calculator */}
-        <TouchableOpacity
-          style={styles.custom_button_container}
-          onPress={() => {
-            navigation.navigate("Net Rental Yield");
-          }}
-        >
-          <View style={styles.image_box}>
-            <Image
-              source={require("../images/net_rental_yield.png")}
-              style={styles.ImageIconStyle}
-            />
-          </View>
-          <View style={styles.text_box}>
-            <Text>Net Rental Yield</Text>
-            <Text style={{ fontSize: 11 }}>Investment Property Calculator</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.bottom_line}></View>
-
+        <CustomTouchableButton
+          onPress={() => navigation.navigate("Net Rental Yield")}
+          imgSource={require("../images/net_rental_yield.png")}
+          title="Net Rental Yield"
+          description="Investment Property Calculator"
+        ></CustomTouchableButton>
         {/* MORTGAGE CALCULATOR */}
-        {/* <TouchableOpacity
-          style={styles.custom_button_container}
-          onPress={() => {
-            alert("d");
-          }}
-        >
-          <View style={styles.image_box}>
-            <Image
-              source={require("../images/mortgage.png")}
-              style={styles.ImageIconStyle}
-            />
-          </View>
-          <View style={styles.text_box}>
-            <Text>Mortgage Calculator</Text>
-            <Text style={{ fontSize: 11 }}>Landers </Text>
-          </View>
-        </TouchableOpacity> */}
-        <CustomBoxButton
-          onPress={() => navigation.navigate("Price Per Area")}
-          imgSource={require("../images/area.png")}
-          title="jsjasjk"
-          description="sjs"
-        ></CustomBoxButton>
-        <View style={styles.bottom_line}></View>
-        <CustomBoxButton
-          onPress={() => navigation.navigate("Price Per Area")}
-          imgSource={require("../images/area.png")}
-          title="jsjasjk"
-          description="sjs"
-        ></CustomBoxButton>
-
+        <CustomTouchableButton
+          onPress={() => alert("nothing added yet")}
+          imgSource={require("../images/mortgage.png")}
+          title="Mortgage Calculator"
+          description="How much will you pay a month"
+        ></CustomTouchableButton>
         {/* AREA CALCULATOR */}
-        {/* <TouchableOpacity
-          style={styles.custom_button_container}
-          onPress={() => {
-            navigation.navigate("Price Per Area");
-          }}
-        >
-          <View style={styles.image_box}>
-            <Image
-              source={require("../images/area.png")}
-              style={styles.ImageIconStyle}
-            />
-          </View>
-          <View style={styles.text_box}>
-            <Text>Area Calculator</Text>
-            <Text style={{ fontSize: 11 }}>Price to Sqmetre/Sqfoot</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.bottom_line}></View> */}
-      </View>
-    </ScrollView>
+        <CustomTouchableButton
+          onPress={() => navigation.navigate("Price Per Area")}
+          imgSource={require("../images/area.png")}
+          title="Area Calculator"
+          description="Price to Sqmetre/Sqfoot"
+        ></CustomTouchableButton>
+      </ScrollView>
+    </SafeAreaView>
   );
-}
-
-// Styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    // backgroundColor: "#fff"
-  },
-  custom_button_container: {
-    flexDirection: "row",
-    alignItems: "center",
-    // backgroundColor: "#fff",
-    width: "100%",
-    height: 85,
-  },
-  ImageIconStyle: {
-    height: 48,
-    width: 48,
-  },
-  image_box: {
-    width: "25%",
-    alignItems: "center",
-  },
-  text_box: {
-    marginRight: 10,
-  },
-  bottom_line: {
-    width: "75%",
-    backgroundColor: "gray",
-    alignSelf: "flex-end",
-    height: "0.2%",
-  },
-});
-
-{
-  /* <TouchableOpacity
-style={styles.custom_button_container}
-onPress={() => {
-  alert("d");
-}}
->
-<Image
-  source={require("../images/mortgage.png")}
-  style={styles.ImageIconStyle}
-/>
-<Text>Mortgage Calculator</Text>
-
-<Icon
-  iconStyle={{ marginRight: 10 }}
-  size={30}
-  type="ionicon"
-  name={"md-arrow-forward"}
-/>
-</TouchableOpacity> */
 }

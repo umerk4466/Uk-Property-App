@@ -99,17 +99,27 @@ export const HeadingText = (props) => {
   );
 };
 
-// CustomBoxButton Component
-export const CustomBoxButton = ({ onPress, imgSource, title, description }) => {
+// CustomTouchableButton Component
+export const CustomTouchableButton = ({
+  onPress,
+  imgSource,
+  title,
+  description,
+}) => {
   return (
-    <TouchableOpacity style={styles.ButtonContainerStyle} onPress={onPress}>
-      <View style={styles.ImgBox}>
-        <Image source={imgSource} style={styles.ImageIconStyle} />
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.ButtonContainerStyle}>
+        <View style={styles.ImgBox}>
+          <Image source={imgSource} style={styles.ImageIconStyle} />
+        </View>
+        <View style={styles.TextBox}>
+          <Text numberOfLines={1}>{title}</Text>
+          <Text numberOfLines={1} style={{ color: "gray" }}>
+            {description}
+          </Text>
+        </View>
       </View>
-      <View style={styles.TextBox}>
-        <Text>{title}</Text>
-        <Text style={{ fontSize: 11 }}>{description} </Text>
-      </View>
+      <View style={styles.BottomLine}></View>
     </TouchableOpacity>
   );
 };
@@ -140,7 +150,7 @@ const styles = StyleSheet.create({
   },
   TextStyle: {
     textAlign: "center",
-    color: "rgba(0, 0, 0, 0.23)",
+    color: "#999",
     padding: 2,
   },
   // ResultBox Component Style Start
@@ -173,26 +183,30 @@ const styles = StyleSheet.create({
     color: "#2980B9",
     paddingVertical: 10,
   },
-  // CustomBoxButton Component style start
+  // CustomTouchableButton Component style start
   ButtonContainerStyle: {
-    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
-    // width: "100%",
     height: 85,
+    padding: 10,
   },
   ImageIconStyle: {
-    height: 48,
-    width: 48,
+    height: 45,
+    width: 45,
   },
   ImgBox: {
-    width: "25%",
+    width: 65,
     alignItems: "center",
   },
   TextBox: {
-    marginRight: 10,
+    flex: 1,
+    marginLeft: 10,
+  },
+  BottomLine: {
+    flex: 1,
+    marginLeft: 85,
+    backgroundColor: "lightgray",
+    height: 1,
   },
   //static Font Size LargeFont to use in Text
   LargeFont: { fontSize: 16 },
