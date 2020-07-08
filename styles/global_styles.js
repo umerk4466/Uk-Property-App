@@ -55,5 +55,3 @@ export const CustomTheme = {
 
 // specify variable for statusbar color (Primary Variant color)
 export const StatusBarColor = "#2980b9";
-// specify variable for secondary color (for buttons etc)
-export const SecondaryColor = "#1abc9c";

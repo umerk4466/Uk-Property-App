@@ -8,7 +8,6 @@ import Net_rental_yield_screen from "./Net_rental_yield_screen";
 // import stack Navigator
 import { createStackNavigator } from "@react-navigation/stack";
 import Area_calc from "./Area_calc";
-import { color } from "react-native-reanimated";
 const Stack = createStackNavigator();
 
 export default function HomeStack({ navigation }) {
@@ -34,7 +33,7 @@ export default function HomeStack({ navigation }) {
                 type="clear"
               />
             </View>
-          )
+          ),
         }}
       />
       <Stack.Screen name="ROI Calculator" component={Roi_screen} />
@@ -50,6 +49,6 @@ export default function HomeStack({ navigation }) {
 // styles
 const styles = StyleSheet.create({
   margnLeft: {
-    marginLeft: 12
-  }
+    marginLeft: 12,
+  },
 });
