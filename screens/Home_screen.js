@@ -5,8 +5,10 @@ import {
   View,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from "react-native";
+
+import { CustomBoxButton } from "../components/custom-components";
 
 export default function Home_screen({ navigation }) {
   return (
@@ -53,7 +55,7 @@ export default function Home_screen({ navigation }) {
         <View style={styles.bottom_line}></View>
 
         {/* MORTGAGE CALCULATOR */}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.custom_button_container}
           onPress={() => {
             alert("d");
@@ -69,11 +71,23 @@ export default function Home_screen({ navigation }) {
             <Text>Mortgage Calculator</Text>
             <Text style={{ fontSize: 11 }}>Landers </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <CustomBoxButton
+          onPress={() => navigation.navigate("Price Per Area")}
+          imgSource={require("../images/area.png")}
+          title="jsjasjk"
+          description="sjs"
+        ></CustomBoxButton>
         <View style={styles.bottom_line}></View>
+        <CustomBoxButton
+          onPress={() => navigation.navigate("Price Per Area")}
+          imgSource={require("../images/area.png")}
+          title="jsjasjk"
+          description="sjs"
+        ></CustomBoxButton>
 
         {/* AREA CALCULATOR */}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.custom_button_container}
           onPress={() => {
             navigation.navigate("Price Per Area");
@@ -90,7 +104,7 @@ export default function Home_screen({ navigation }) {
             <Text style={{ fontSize: 11 }}>Price to Sqmetre/Sqfoot</Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.bottom_line}></View>
+        <View style={styles.bottom_line}></View> */}
       </View>
     </ScrollView>
   );
@@ -100,7 +114,7 @@ export default function Home_screen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
     // backgroundColor: "#fff"
   },
   custom_button_container: {
@@ -108,25 +122,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // backgroundColor: "#fff",
     width: "100%",
-    height: 85
+    height: 85,
   },
   ImageIconStyle: {
     height: 48,
-    width: 48
+    width: 48,
   },
   image_box: {
     width: "25%",
-    alignItems: "center"
+    alignItems: "center",
   },
   text_box: {
-    marginRight: 10
+    marginRight: 10,
   },
   bottom_line: {
     width: "75%",
     backgroundColor: "gray",
     alignSelf: "flex-end",
-    height: "0.2%"
-  }
+    height: "0.2%",
+  },
 });
 
 {

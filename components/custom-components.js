@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 // import input-field for money
 import { TextInputMask } from "react-native-masked-text";
 // import Yup library for error messages
@@ -98,6 +98,22 @@ export const HeadingText = (props) => {
     </Text>
   );
 };
+
+// CustomBoxButton Component
+export const CustomBoxButton = ({ onPress, imgSource, title, description }) => {
+  return (
+    <TouchableOpacity style={styles.ButtonContainerStyle} onPress={onPress}>
+      <View style={styles.ImgBox}>
+        <Image source={imgSource} style={styles.ImageIconStyle} />
+      </View>
+      <View style={styles.TextBox}>
+        <Text>{title}</Text>
+        <Text style={{ fontSize: 11 }}>{description} </Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 // Yup Common Error Messages
 export const CommonErrorMessages = yup
   .number("Value must be a number")
@@ -156,6 +172,27 @@ const styles = StyleSheet.create({
   HeadingTextStyle: {
     color: "#2980B9",
     paddingVertical: 10,
+  },
+  // CustomBoxButton Component style start
+  ButtonContainerStyle: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "red",
+    // width: "100%",
+    height: 85,
+  },
+  ImageIconStyle: {
+    height: 48,
+    width: 48,
+  },
+  ImgBox: {
+    width: "25%",
+    alignItems: "center",
+  },
+  TextBox: {
+    marginRight: 10,
   },
   //static Font Size LargeFont to use in Text
   LargeFont: { fontSize: 16 },
