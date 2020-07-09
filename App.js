@@ -15,6 +15,7 @@ StatusBar.setBarStyle("light-content", true);
 // drawer navigation
 const Drawer = createDrawerNavigator();
 
+// https://medium.com/@digitaldaswani/react-native-expo-boilerplate-3bf42b2eaa50
 export default function App() {
   return (
     <NavigationContainer theme={CustomTheme}>
